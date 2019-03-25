@@ -1,12 +1,22 @@
-const index = require('./index');
-const jsdom = require("jsdom");
-const { JSDOM } = jsdom;
+import { generateCell } from "./index";
 
-
-describe('Should have a morpion grid',()=>{
-    test('should have a cell', () => {
-        const dom = new JSDOM(`<input type="text"/>`);
-        expect(index.dom).toEqual(dom);
-      });
-
+describe("Should have a morpion grid", () => {
+  test("should have a cell", () => {
+    let grid = ['<input type="text"/>'];
+    expect(grid).toHaveLength(1);
+  });
+  test("should have a grid", () => {
+    let grid = [
+      '<input type="text"/>',
+      '<input type="text"/>',
+      '<input type="text"/>',
+      '<input type="text"/>',
+      '<input type="text"/>',
+      '<input type="text"/>',
+      '<input type="text"/>',
+      '<input type="text"/>',
+      '<input type="text"/>'
+    ];
+    expect(generateCell.grid).toHaveLength(9);
+  });
 });
