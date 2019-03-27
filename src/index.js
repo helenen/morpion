@@ -1,9 +1,9 @@
-export function generateCell() {
-  let grid = [];
-  let input = '<input type="text/>';
-  for (var i = 0; i < 9; i++) {
-    grid.push(input);
-    console.log(grid);
+export function generateBoard() {
+  let grid = new Array(3).fill([null, null, null]);      
+
+
+  for (let i = 0; i < grid.length; i++) {
+  
   }
   return grid;
 }
