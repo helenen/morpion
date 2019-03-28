@@ -1,4 +1,4 @@
-import { generateBoard } from "./index";
+import { generateBoard, playAPawn} from "./index";
 
 describe("Should have a morpion grid", () => {
   test("should return a gameboard of 3 column", () => {
@@ -12,6 +12,17 @@ describe("Should have a morpion grid", () => {
         [null,null, null],
         [null,null, null],
         [null,null, null]
+    ]);
+  });
+});
+describe("Should play a pawn", () => {
+  test("should return value's element", () => {
+    const res = playAPawn();
+    expect(res).toEqual(
+    [
+      [x, null, null],
+      [null,null, null],
+      [null,null, null]
     ]);
   });
 });
