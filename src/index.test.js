@@ -1,21 +1,17 @@
 import { generateBoard } from "./index";
 
 describe("Should have a morpion grid", () => {
-  test("should return array of arrays", () => {
+  test("should return a gameboard of 3 column", () => {
     let res = generateBoard();
-    expect(res).toEqual(res);
+    expect(res.length).toEqual(3);
   });
-  test("should return a array of size 2 ", () => {
-    let res = generateBoard();
-    expect(res.length).toEqual(2);
-  });
-  test("should return array of arrays with values to type null ", () => {
+  test("should return an empty gameboard of 3 column * 3 row", () => {
     let res = generateBoard();
     expect(res).toEqual(
       [
-        ['<input type="text" value="null"/>','<input type="text" value="null"/>','<input type="text" value="null"/>'],
-        ['<input type="text" value="null"/>','<input type="text" value="null"/>','<input type="text" value="null"/>'],
-        ['<input type="text" value="null"/>','<input type="text" value="null"/>','<input type="text" value="null"/>'],
+        [null,null, null],
+        [null,null, null],
+        [null,null, null]
     ]);
   });
 });
