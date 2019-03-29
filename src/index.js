@@ -1,22 +1,25 @@
 export function generateBoard() {
-  let grid = new Array(3).fill([null, null, null]);       
+  let grid = new Array(3).fill(['', '', '']);       
   return grid;
 }
 
 export function playAPawn() {
-  const board = generateBoard();
-  console.log(board);
-  // const mapCell = board.map(boardItem =>{
-  //   console.log(boardItem);
-  // boardItem.map(subBoardItem =>{
-  //   console.log(subBoardItem);
-  // });
-  // if (boardItem !== null){
-  //   boardItem.value === 'x';
-  // }
-  // else{
-  //   boardItem.value === null;
-  // }
+  const gamerOne = 'x';
+  return gamerOne;
+
+
+//   const board = generateBoard();
+//   const mapArrays = board.map(line =>{
+//     console.log(line);
+//   line.map(item =>{
+
+//   if (item === ''){
+//     board[0].line[0].splice(0,1,'x');
+    
+//   }
+//   console.log( board[0].line[0]);
 // });
-  return mapCell;
+ 
+//   return mapArrays;
+//   });
 }
