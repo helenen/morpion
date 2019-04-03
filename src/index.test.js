@@ -16,10 +16,16 @@ describe("Should have a morpion grid", () => {
   });
 });
 describe("Should play a pawn", () => {
-  test("should return x for first gamer", () => {
-   const res = playAPawn();
-  const gamerOne = 'x';
-    expect(res).toHaveReturned(gamerOne);
+  test("should return board modified", () => {
+    const grid = generateBoard();
+    const res = playAPawn(grid);
+    
+    expect(res).toEqual(
+      [
+        ['x','', ''],
+        ['', '', ''],
+        ['', '', '']
+      ]);
   });
   // test("should return value's element", () => {
   //   const res = playAPawn();
