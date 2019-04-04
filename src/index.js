@@ -3,12 +3,9 @@ export function generateBoard() {
   return grid;
 }
 
-export function playAPawn(grid) {
-  const gamers = {
-    gamerOne: 'x',
-    gamerTwo: 'o'
-  };
-  
+export function playAPawn(grid,row,column,gamerOne) {
+ 
+
   return grid;
 
 }

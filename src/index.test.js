@@ -1,7 +1,7 @@
 import { generateBoard, playAPawn} from "./index";
 
 describe("Should have a morpion grid", () => {
-  test("should return a gameboard of 3 column", () => {
+  test("should return a gameboard of 3 rows", () => {
     const res = generateBoard();
     expect(res.length).toEqual(3);
   });
@@ -17,23 +17,13 @@ describe("Should have a morpion grid", () => {
 });
 describe("Should play a pawn", () => {
   test("should return board modified", () => {
-    const grid = generateBoard();
-    const res = playAPawn(grid);
-    
-    expect(res).toEqual(
+  
+    const res = playAPawn(row, column, gamerOne);
+    expect(res,0,0,'X').toEqual(
       [
-        ['x','', ''],
-        ['', '', ''],
-        ['', '', '']
-      ]);
+        ['X','',''],
+        ['','',''],
+        ['','','']
+    ]);
   });
-  // test("should return value's element", () => {
-  //   const res = playAPawn();
-  //   expect(res).toEqual(
-  //   [
-  //     ['x', '', ''],
-  //     ['x', '', ''],
-  //     ['x', '', '']
-  //   ]);
-  // });
 });
