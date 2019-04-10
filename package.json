@@ -9,9 +9,11 @@
     "scripts": {
         "dev": "node index.js",
         "test": "jest --env=node",
-        "release": "standard-version"
+        "release": "standard-version",
+        "tdd": "npm run test --watch"
     },
     "devDependencies": {
+        "@babel/preset-env": "^7.4.2",
         "babel-core": "^6.26.3",
         "babel-jest": "^24.5.0",
         "eslint": "^5.15.3",

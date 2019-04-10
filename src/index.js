@@ -1,9 +1,12 @@
-export function generateCell() {
-  let grid = [];
-  let input = '<input type="text/>';
-  for (var i = 0; i < 9; i++) {
-    grid.push(input);
-    console.log(grid);
-  }
+export function generateBoard() {
+  let grid = new Array(3).fill(["", "", ""]);
   return grid;
 }
+
+export function playAPawn(board, row, column, garmerOne) {
+  board = generateBoard();
+  const gamerOneplay = board.replace(\w,garmerOne);
+  return gamerOneplay;
+}
+
+playAPawn(generateBoard(), 0, 0, "X");
