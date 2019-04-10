@@ -3,9 +3,10 @@ export function generateBoard() {
   return grid;
 }
 
-export function playAPawn(grid,row,column,gamerOne) {
- 
+export function playAPawn(board,row,column,gamerOne) {
 
-  return grid;
-
+  board[row][column]= gamerOne;
+  console.log(board);
+  return board;
 }
+

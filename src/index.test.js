@@ -17,9 +17,9 @@ describe("Should have a morpion grid", () => {
 });
 describe("Should play a pawn", () => {
   test("should return board modified", () => {
-  
-    const res = playAPawn(row, column, gamerOne);
-    expect(res,0,0,'X').toEqual(
+    const board = generateBoard();
+ 
+    expect(playAPawn(board,0,0,'X')).toEqual(
       [
         ['X','',''],
         ['','',''],
