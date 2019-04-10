@@ -1,12 +1,13 @@
 export function generateBoard() {
-  let grid = new Array(3).fill(["", "", ""]);
+  let grid = new Array(
+    new Array("", "", ""),
+    new Array("", "", ""),
+    new Array("", "", "")
+  );
   return grid;
 }
 
-export function playAPawn(board, row, column, garmerOne) {
-  board = generateBoard();
-  const gamerOneplay = board.replace(\w,garmerOne);
-  return gamerOneplay;
+export function playAPawn(board, row, column, gamerOne) {
+  board[row][column] = gamerOne;
+  return board;
 }
-
-playAPawn(generateBoard(), 0, 0, "X");
