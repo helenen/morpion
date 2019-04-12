@@ -42,6 +42,15 @@ describe("should win a party with 3 same pawns line up", () => {
       ['', '', ''],
       ['', '', '']
     ]);
-   
+    expect(winningHorizonal(board, 0, 1, true)).toEqual([
+      ['','X',''],
+      ['', '', ''],
+      ['', '', '']
+    ]);
+    expect(winningHorizonal(board, 0, 2, true)).toEqual([
+      ['','','X'],
+      ['', '', ''],
+      ['', '', '']
+    ]);
   });
 });
