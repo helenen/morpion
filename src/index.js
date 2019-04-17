@@ -8,8 +8,9 @@ export function generateBoard() {
 }
 
 export function playAPawn(board, row, column, playerOne) {
-  const value = playerOne ? 'X' : 'O';
-  const caseValue = board[row][column] == '' ? value : value === playerOne ? 'X' : 'O';  
+  const value = playerOne ? "X" : "O";
+  const caseValue =
+    board[row][column] == "" ? value : value === playerOne ? "X" : "O";
   board[row][column] = caseValue;
   return board;
 }
@@ -26,9 +27,16 @@ export function playAPawn(board, row, column, playerOne) {
 //   return board + partyFinishMessage;
 
 // }
-export function winningParty(board){
-  function winningHorizonal(){
-    
+export function winningHorizonal(board) {
+  const value = playerOne ? "X" : "O";
+  const winMessage = "you are win " + value;
+  for (let i = 0; i < board.length; i++) {
+    for (let j = 0; j < board[i]; j++) {
+      board[row] == value ? true + winMessage : null;
+    }
   }
-
+  return board;
 }
+// export function winningParty() {
+//   return winningHorizonal;
+// }
