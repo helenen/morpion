@@ -2,7 +2,9 @@ import {
   generateBoard,
   playAPawn,
   winningParty,
-  winningHorizonal
+  winningHorizonal,
+  winningDiagonal,
+  winningVertical
 } from "./index";
 
 describe("Should have a morpion grid", () => {
@@ -39,17 +41,29 @@ describe("Should play a pawn", () => {
     ]);
   });
 });
-describe("should win a party with 3 same pawns line up", () => {
-  const board =[
-    ["X", "X", "X"],
-    ["", "", ""],
-    ["", "", ""]
-  ] ;
-  test("should win a party with 3 X pawns line up", () => {
-    expect(winningHorizonal(board,true)).toEqual([
+describe("should win a party with 3 same pawns line up different ways", () => {
+  test("should win a party with 3 X pawns line up horizontal way", () => {
+    const board = [["X", "X", "X"], ["", "", ""], ["", "", ""]];
+    expect(winningHorizonal(board, true)).toEqual([
       ["X", "X", "X"],
       ["", "", ""],
       ["", "", ""]
+    ]);
+  });
+  test("should win a party with 3 O pawns line up diagonal way", () => {
+    const board = [["O", "", ""], ["", "O", ""], ["", "", "O"]];
+    expect(winningDiagonal(board, false)).toEqual([
+      ["O", "", ""],
+      ["", "O", ""],
+      ["", "", "O"]
+    ]);
+  });
+  test("should win a party with 3 X pawns line up vertical way", () => {
+    const board = [["X", "", ""], ["X", "", ""], ["X", "", ""]];
+    expect(winningVertical(board, true)).toEqual([
+      ["X", "", ""],
+      ["X", "", ""],
+      ["X", "", ""]
     ]);
   });
 });
