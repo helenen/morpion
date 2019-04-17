@@ -1,3 +1,5 @@
+import { join } from "path";
+
 export function generateBoard() {
   let grid = new Array(
     new Array("", "", ""),
@@ -15,28 +17,24 @@ export function playAPawn(board, row, column, playerOne) {
   return board;
 }
 
-// export function winningHorizonal(board){
-//   const value = playerOne ? 'X' : 'O';
-//   for(let i =0; i < board.length;i++){
-//     for(let j = 0; j<board[i]; j++){
-//       board[row] == value ? partyFinishMessage : null;
-//     }
-//   }
-//   const partyFinishMessage = "You're won";
-
-//   return board + partyFinishMessage;
-
-// }
-export function winningHorizonal(board) {
+export function winningHorizonal(board,playerOne) {
   const value = playerOne ? "X" : "O";
-  const winMessage = "you are win " + value;
+  //const winMessage = "you are win " + value;
   for (let i = 0; i < board.length; i++) {
-    for (let j = 0; j < board[i]; j++) {
-      board[row] == value ? true + winMessage : null;
+    for(let j = 0; j < board.length; j++){
+      board[i][j] == value &&  board[i][j] <= 3 ? true : null;
+      break;
     }
+    // for (let j = 0; j < board[i].length; j++) {
+    //   board[i][j] == value ? ++count : null;
+    //   console.log(count);
+    // }
+
+    console.log(board);
   }
   return board;
 }
+
 // export function winningParty() {
 //   return winningHorizonal;
 // }

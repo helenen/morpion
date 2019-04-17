@@ -40,20 +40,14 @@ describe("Should play a pawn", () => {
   });
 });
 describe("should win a party with 3 same pawns line up", () => {
-  const board = generateBoard();
+  const board =[
+    ["X", "X", "X"],
+    ["", "", ""],
+    ["", "", ""]
+  ] ;
   test("should win a party with 3 X pawns line up", () => {
-    expect(winningHorizonal(board, 0, 0, true)).toEqual([
-      ["X", "", ""],
-      ["", "", ""],
-      ["", "", ""]
-    ]);
-    expect(winningHorizonal(board, 0, 1, true)).toEqual([
-      ["", "X", ""],
-      ["", "", ""],
-      ["", "", ""]
-    ]);
-    expect(winningHorizonal(board, 0, 2, true)).toEqual([
-      ["", "", "X"],
+    expect(winningHorizonal(board,true)).toEqual([
+      ["X", "X", "X"],
       ["", "", ""],
       ["", "", ""]
     ]);
