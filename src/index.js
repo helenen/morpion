@@ -17,35 +17,41 @@ export function playAPawn(board, row, column, playerOne) {
   return board;
 }
 
-export function winningHorizonal(board, playerOne) {
-  const value = playerOne ? "X" : "O";
-  for (let i = 0; i < board.length; i++) {
-    for (let j = 0; j < board.length; j++) {
-      board[i][j] == value && board[i][j] <= 3 ? true : null;
-      break;
-    }
+export function winningHorizonal(board, player) {
+  if(board[0][0] === player && board[0][1]=== player && board[0][2]){
+    return true;
+  }else if(board[1][0] === player && board[1][1]=== player && board[2][1]){
+    return true;
+  }else if(board[2][0] === player && board[2][1]=== player && board[2][2]){
+    return true;
   }
-  return board;
+  return false;
 }
-export function winningDiagonal(board, playerOne) {
-  const value = playerOne ? "X" : "O";
-  for (let i = 0; i < board.length; i++) {
-    for (let j = 0; j < board.length; j++) {
-      board[i][j] == value && board[i][j] <= 3 ? true : null;
-      break;
-    }
+export function winningDiagonal(board, player) {   
+  if(board[0][0] === player && board[1][1]=== player && board[2][2]){
+    return true
+  }else if(board[0][2] === player && board[1][1]===player && board[2][0]){
+    return true;
   }
-  return board;
+  return false;
 }
-export function winningVertical(board, playerOne) {
-  const value = playerOne ? "X" : "O";
-  for (let i = 0; i < board.length; i++) {
-    for (let j = 0; j < board.length; j++) {
-      board[i][j] == value && board[i][j] <= 3 ? true : null;
-      break;
-    }
+export function winningVertical(board, player) {
+  
+  if (board[0][0] === player && board[1][0] === player && board[2][0] === player) {
+    return true
+  } else if (board[0][1] === player && board[1][1] === player && board[2][1] === player) {
+    return true
+  } else if (board[0][3] === player && board[1][3] === player && board[2][3] === player) {
+    return true
   }
-  return board;
+  return false ;
 }
 
-export function winningParty() {}
+export function winningGame(board, player) {
+  if(winningHorizonal(board, player) || winningVertical(board, player) || winningDiagonal(board, player)){
+    return "Tu as gagné " + player;
+  }else{
+    return "Tu as perdu " + player;
+  }
+  
+}
