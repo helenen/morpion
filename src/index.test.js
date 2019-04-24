@@ -64,13 +64,12 @@ describe("should win a party with 3 same pawns line up different ways", () => {
   });
   test("win sentence", () => {
     const board = [["X", "", ""], ["X", "", ""], ["X", "", ""]];
-    const player = 'X' || 'O';
     winningHorizonal(board, 'X') || winningVertical(board, 'X') || winningDiagonal(board, 'X') === true
-    expect(winningGame(board,'O')).toEqual("Tu as gagné O") ;
+    expect(winningGame(board, 'O')).toEqual("Tu as perdu O");
   });
-  // test("win sentence", () => {
-  //    winningHorizonal === false;
-  
-  //   expect(winningGame('X')).toEqual("Tu as perdu joueur1") ;
-  // });
+  test("win sentence", () => {
+    const board = [["O", "", ""], ["", "O", ""], ["", "", "O"]];
+    winningHorizonal(board, 'O') || winningVertical(board, 'O') || winningDiagonal(board, 'O') === true
+    expect(winningGame(board, 'X')).toEqual("Tu as perdu X");
+  });
 });
