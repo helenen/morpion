@@ -40,19 +40,23 @@ export function winningDiagonal(board, player) {
 
 }
 export function winningVertical(board, player) {
-  let count = 0
+  let col;
+  let count = 0;
   for (let i = 0; i < board.length; i++) {
-    for (let y = 0; y < board[i].length; y++) {
-      if (board[i][y] === player) {
-        count += 1
+    for (let j = 0; j < board[i].length; j++) {
+      if (board[i][j] === player && count === 0) {
+        count++
+        col = board[j];
+        break
       }
-    } if (count === 3) {
-      return true
+      else if (count > 0 && board[i][col] === player) {
+        count++
+        break
+      }
     }
-  }
-  console.log(count)
-  return false
+  } console.log(count);
 }
+
 // if (board[0][0] === player && board[1][0] === player && board[2][0] === player) {
 //   return true
 // } else if (board[0][1] === player && board[1][1] === player && board[2][1] === player) {
