@@ -8,7 +8,7 @@
   },
   "scripts": {
     "dev": "node index.js",
-    "test": "jest --env=node",
+    "test": "jest --coverage",
     "release": "standard-version",
     "tdd": "npm run test --watch"
   },
