@@ -4,7 +4,8 @@ import {
   winningGame,
   winningHorizonal,
   winningDiagonal,
-  winningVertical
+  winningVertical,
+  aiPlayAPawn
 } from "./index";
 
 describe("Should have a morpion grid", () => {
@@ -71,8 +72,9 @@ describe("should win a party with 3 same pawns line up different ways", () => {
     expect(winningGame(board, "O")).toEqual("Tu as gagné O");
   });
 });
-describe("", () => {
-  test("", () => {
-    expect().toEqual();
+describe("AI place a pawn", () => {
+  test("AI place a pawn", () => {
+    const board = [["X", "", ""], ["", "", ""], ["", "", ""]];
+    expect(aiPlayAPawn(board, "O")).toEqual([["X", "", "O"], ["", "", ""], ["", "", ""]]);
   });
 });
