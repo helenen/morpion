@@ -57,27 +57,18 @@ export function winningVertical(board, player) {
   return false;
 }
 export function winningGame(board, player) {
-  let ho = winningHorizonal(board, player);
-  let ver = winningVertical(board, player);
-  let dia = winningDiagonal(board, player);
-  // console.log("result", ho);
-  // console.log("ver", ver);
-  // console.log("dia", dia);
-  if (ho === true) {
-    console.log("ho", ho);
-    return "Tu as gagné " + player;
-
-  }
-  if (ver === true) {
-    console.log("ver", ver);
+  let horizontal = winningHorizonal(board, player);
+  let vertical = winningVertical(board, player);
+  let diagonal = winningDiagonal(board, player);
+  if (horizontal === true) {
     return "Tu as gagné " + player;
   }
-  if (dia === true) {
-    console.log("dia", dia);
+  if (vertical === true) {
     return "Tu as gagné " + player;
   }
-  else {
-    //console.log("zouzou", board);
+  if (diagonal === true) {
+    return "Tu as gagné " + player;
+  } else {
     return "Tu as perdu " + player;
   }
 }

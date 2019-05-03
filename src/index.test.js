@@ -62,14 +62,17 @@ describe("should win a party with 3 same pawns line up different ways", () => {
     const board = [["X", "", ""], ["", "X", ""], ["X", "", ""]];
     expect(winningVertical(board, "X")).toEqual(false);
   });
-  test("win sentence first", () => {
-    const board = [["X", "", ""], ["X", "", ""], ["X", "", ""]];
-    winningHorizonal(board, "X") || winningVertical(board, "X") || winningDiagonal(board, "X")
-    expect(winningGame(board, "X")).toEqual("Tu as gagné X");
+  test("win sentence", () => {
+    const board = [["X", "", ""], ["", "X", ""], ["X", "", ""]];
+    expect(winningGame(board, "X")).toEqual("Tu as perdu X");
   });
   test("win sentence", () => {
     const board = [["O", "", ""], ["", "O", ""], ["", "", "O"]];
-    winningHorizonal(board, "O") || winningVertical(board, "O") || winningDiagonal(board, "O") === true;
-    expect(winningGame(board, "X")).toEqual("Tu as perdu X");
+    expect(winningGame(board, "O")).toEqual("Tu as gagné O");
+  });
+});
+describe("", () => {
+  test("", () => {
+    expect().toEqual();
   });
 });
