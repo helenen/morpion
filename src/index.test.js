@@ -74,7 +74,11 @@ describe("should win a party with 3 same pawns line up different ways", () => {
 });
 describe("AI place a pawn", () => {
   test("AI place a pawn", () => {
-    const board = [["X", "", ""], ["", "", ""], ["", "", ""]];
-    expect(aiPlayAPawn(board, "O")).toEqual([["X", "", "O"], ["", "", ""], ["", "", ""]]);
+    const board = [["", "", ""], ["", "", ""], ["", "", ""]];
+    expect(aiPlayAPawn(board, false, 0, 0)).toEqual([
+      ["0", "", ""],
+      ["", "", ""],
+      ["", "", ""]
+    ]);
   });
 });

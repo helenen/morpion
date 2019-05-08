@@ -72,11 +72,13 @@ export function winningGame(board, player) {
     return "Tu as perdu " + player;
   }
 }
-export function aiPlayAPawn(board, player) {
+export function aiPlayAPawn(board, player, row, column) {
   const value = player ? "X" : "O";
-  const row = Math.floor(Math.random() * 10);
-  const column = Math.floor(Math.random() * 10);
-  const caseValue = board[row][column] == "" ? value : value === player ? "X" : "O";
+  row = Math.floor(Math.random() * 3);
+  column = Math.floor(Math.random() * 3);
+  const caseValue =
+    board[row][column] == "" ? value : value === player ? "X" : "O";
   board[row][column] = caseValue;
+  console.log(board);
   return board;
 }
