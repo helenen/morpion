@@ -73,12 +73,20 @@ describe("should win a party with 3 same pawns line up different ways", () => {
   });
 });
 describe("AI place a pawn", () => {
+  // test("AI place a pawn", () => {
+  //   const board = [["", "", ""], ["", "", ""], ["", "", ""]];
+  //   expect(aiPlayAPawn(board, false, () => 2)).toEqual([
+  //     ["", "", ""],
+  //     ["", "", ""],
+  //     ["", "", "O"]
+  //   ]);
+  // });
   test("AI place a pawn", () => {
     const board = [["", "", ""], ["", "", ""], ["", "", ""]];
-    expect(aiPlayAPawn(board, false, 0, 0)).toEqual([
-      ["0", "", ""],
+    expect(aiPlayAPawn(board, false, () => 2)).toEqual([
       ["", "", ""],
-      ["", "", ""]
+      ["", "", ""],
+      ["", "", "O"]
     ]);
   });
 });
