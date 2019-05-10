@@ -72,11 +72,10 @@ export function winningGame(board, player) {
     return "Tu as perdu " + player;
   }
 }
-export function aiPlayAPawn(board, playerOne, aiPlayAPawnRandom) {
-  console.log(aiPlayAPawnRandom);
-  const row = aiPlayAPawnRandom();
-  const column = aiPlayAPawnRandom();
-  return playAPawn(board, row, column, playerOne === 'O');
-}
 
-aiPlayAPawn([], 'X', Math.floor(Math.random * (2 - 0) + 0));
+export function aiPlayAPawn(board, playerOne, aiPlayAPawnRandom) {
+  console.log(playerOne);
+  const row = Math.floor(aiPlayAPawnRandom() * (2 - 0));
+  const column = Math.floor(aiPlayAPawnRandom() * (2 - 0));
+  return playAPawn(board, row, column, playerOne === "O");
+}
