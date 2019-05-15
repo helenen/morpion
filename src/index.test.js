@@ -20,7 +20,7 @@ describe("Should have a morpion grid", () => {
 describe("Should play a pawn", () => {
   const board = generateBoard();
 
-  test("should return board modified with playerOne", () => {
+  test("should return board modified with player", () => {
     expect(playAPawn(board, 0, 0, true)).toEqual([
       ["X", "", ""],
       ["", "", ""],
@@ -75,10 +75,26 @@ describe("should win a party with 3 same pawns line up different ways", () => {
 describe("AI place a pawn", () => {
   test("AI place a pawn", () => {
     const board = [["", "", ""], ["", "", ""], ["", "", ""]];
-    expect(aiPlayAPawn(board, "O", () => 0.5)).toEqual([
+    expect(aiPlayAPawn(board, false, () => 1)).toEqual([
       ["", "", ""],
       ["", "", ""],
       ["", "", "O"]
+    ]);
+  });
+  test("AI place a pawn after a player's round", () => {
+    const board = [["X", "", ""], ["", "", ""], ["", "", ""]];
+    expect(aiPlayAPawn(board, false, () => 1)).toEqual([
+      ["X", "", ""],
+      ["", "", ""],
+      ["", "", "O"]
+    ]);
+  });
+  test("AI don't place a pawn on other pawn", () => {
+    const board = [["X", "", ""], ["", "", ""], ["", "", ""]];
+    expect(aiPlayAPawn(board, false, () => 0.1)).toEqual([
+      ["X", "O", ""],
+      ["", "", ""],
+      ["", "", ""]
     ]);
   });
 });
