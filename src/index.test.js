@@ -91,10 +91,10 @@ describe("AI place a pawn", () => {
   });
   test("AI don't place a pawn on other pawn", () => {
     const board = [["X", "", ""], ["", "", ""], ["", "", ""]];
-    expect(aiPlayAPawn(board, false, () => 0.1)).toEqual([
-      ["X", "O", ""],
+    expect(aiPlayAPawn(board, false, () => 1)).toEqual([
+      ["X", "", ""],
       ["", "", ""],
-      ["", "", ""]
+      ["", "", "O"]
     ]);
   });
 });

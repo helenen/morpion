@@ -74,20 +74,18 @@ export function winningGame(board, player) {
 }
 
 export function aiPlayAPawn(board, player, aiPlayAPawnRandom) {
-  //const value = player ? "X" : "O";
+  const value = player ? "X" : "O";
   const row = Math.floor(aiPlayAPawnRandom() * (2 - 0));
   const column = Math.floor(aiPlayAPawnRandom() * (2 - 0));
-  // const caseValue =
-  //   board[row][column] == "" ? value : value === player ? "X" : "O";
-  // board[row][column] = caseValue;
-  if (board[row][column] === "") {
-    return player
-  } else if (board[row][column] === player) {
-    return board[row][column] === 
+
+  if (board[row][column] === "X" && value === "X") {
+    return board[row][column] = value
+  } else if (board[row][column] === "O" && value === "O") {
+    return board[row][column] = value
   }
 
   return playAPawn(board, row, column, player);
 
 }
 
-console.log(aiPlayAPawn([["X", "", ""], ["", "", ""], ["", "", ""]], false, () => 0.1, "call"));
+console.log(aiPlayAPawn([["X", "", ""], ["", "", ""], ["", "", ""]], false, () => 0.7), "call");
