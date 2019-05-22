@@ -21,21 +21,21 @@ describe("Should play a pawn", () => {
   const board = generateBoard();
 
   test("should return board modified with player", () => {
-    expect(playAPawn(board, 0, 0, true)).toEqual([
+    expect(playAPawn(board, 0, 0, "X")).toEqual([
       ["X", "", ""],
       ["", "", ""],
       ["", "", ""]
     ]);
   });
   test("should return board modified with playerTwo", () => {
-    expect(playAPawn(board, 1, 0, false)).toEqual([
+    expect(playAPawn(board, 1, 0, "O")).toEqual([
       ["X", "", ""],
       ["O", "", ""],
       ["", "", ""]
     ]);
   });
   test("should don't modify a pawn already played", () => {
-    expect(playAPawn(board, 1, 0, true)).toEqual([
+    expect(playAPawn(board, 1, 0, "X")).toEqual([
       ["X", "", ""],
       ["O", "", ""],
       ["", "", ""]
@@ -75,7 +75,7 @@ describe("should win a party with 3 same pawns line up different ways", () => {
 describe("AI place a pawn", () => {
   test("AI place a pawn", () => {
     const board = [["", "", ""], ["", "", ""], ["", "", ""]];
-    expect(aiPlayAPawn(board, false, () => 1)).toEqual([
+    expect(aiPlayAPawn(board, "O", () => 1)).toEqual([
       ["", "", ""],
       ["", "", ""],
       ["", "", "O"]
@@ -83,7 +83,7 @@ describe("AI place a pawn", () => {
   });
   test("AI place a pawn after a player's round", () => {
     const board = [["X", "", ""], ["", "", ""], ["", "", ""]];
-    expect(aiPlayAPawn(board, false, () => 1)).toEqual([
+    expect(aiPlayAPawn(board, "O", () => 1)).toEqual([
       ["X", "", ""],
       ["", "", ""],
       ["", "", "O"]
@@ -91,10 +91,10 @@ describe("AI place a pawn", () => {
   });
   test("AI don't place a pawn on other pawn", () => {
     const board = [["X", "", ""], ["", "", ""], ["", "", ""]];
-    expect(aiPlayAPawn(board, false, () => 1)).toEqual([
+    expect(aiPlayAPawn(board, "O", () => 0.5)).toEqual([
       ["X", "", ""],
-      ["", "", ""],
-      ["", "", "O"]
+      ["", "O", ""],
+      ["", "", ""]
     ]);
   });
 });
