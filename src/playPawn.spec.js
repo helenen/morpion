@@ -1,7 +1,7 @@
 import {
     generateBoard,
     playAPawn,
-} from "./index";
+} from "./game";
 
 describe("Should play a pawn", () => {
     const board = generateBoard();

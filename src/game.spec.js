@@ -1,6 +1,6 @@
 import {
   aiPlayAPawn
-} from "./index";
+} from "./game";
 
 describe("aiPlaceAPawn method", () => {
   test("should play a pawn in the middle of the board", () => {

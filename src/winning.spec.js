@@ -3,7 +3,7 @@ import {
     winningHorizonal,
     winningDiagonal,
     winningVertical,
-} from "./index";
+} from "./game";
 
 describe("should win a party with 3 same pawns line up different ways", () => {
     test("should win a party with 3 X pawns line up horizontal way", () => {
