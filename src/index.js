@@ -13,16 +13,7 @@ export function playAPawn(board, row, column, player) {
     board[row][column] = player
   }
   return board
-  // const caseValue =
-  //   board[row][column] == "" ? value : value === player ? "X" : "O";
-  // board[row][column] = caseValue;
-
 }
-console.log(playAPawn([
-  ["", "", ""],
-  ["", "", ""],
-  ["", "", ""]
-], 1, 0, "X"), "board1");
 
 export function winningHorizonal(board, player) {
   let count = 0;
@@ -82,11 +73,11 @@ export function winningGame(board, player) {
   }
 }
 
-export function aiPlayAPawn(board, player, aiPlayAPawnRandom) {
-  const row = Math.floor(aiPlayAPawnRandom() * (2 - 0));
-  const column = Math.floor(aiPlayAPawnRandom() * (2 - 0));
+export function aiPlayAPawn(board, player, randomNumber) {
+  const row = Math.floor(randomNumber() * 1);
+  const column = Math.floor(randomNumber() * 1);
   return playAPawn(board, row, column, player);
 
 }
 
-console.log(aiPlayAPawn([["X", "", ""], ["", "", ""], ["", "", ""]], "O", () => 0.3), "call");
+console.log(aiPlayAPawn([["X", "", ""], ["", "", ""], ["", "", ""]], "O", () => 0.9), "call");

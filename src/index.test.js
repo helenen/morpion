@@ -73,23 +73,23 @@ describe("should win a party with 3 same pawns line up different ways", () => {
   });
 });
 describe("AI place a pawn", () => {
-  test("AI place a pawn", () => {
+  xtest("AI place a pawn", () => {
     const board = [["", "", ""], ["", "", ""], ["", "", ""]];
-    expect(aiPlayAPawn(board, "O", () => 1)).toEqual([
+    expect(aiPlayAPawn(board, "O", () => 0.5)).toEqual([
       ["", "", ""],
-      ["", "", ""],
-      ["", "", "O"]
+      ["", "O", ""],
+      ["", "", ""]
     ]);
   });
   test("AI place a pawn after a player's round", () => {
     const board = [["X", "", ""], ["", "", ""], ["", "", ""]];
-    expect(aiPlayAPawn(board, "O", () => 1)).toEqual([
-      ["X", "", ""],
+    expect(aiPlayAPawn(board, "O", () => 0.2)).toEqual([
+      ["X", "O", ""],
       ["", "", ""],
-      ["", "", "O"]
+      ["", "", ""]
     ]);
   });
-  test("AI don't place a pawn on other pawn", () => {
+  xtest("AI don't place a pawn on other pawn", () => {
     const board = [["X", "", ""], ["", "", ""], ["", "", ""]];
     expect(aiPlayAPawn(board, "O", () => 0.5)).toEqual([
       ["X", "", ""],
