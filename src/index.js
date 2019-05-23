@@ -31,6 +31,7 @@ export function winningHorizonal(board, player) {
   }
   return false;
 }
+
 export function winningDiagonal(board, player) {
   if (board[0][0] === player && board[1][1] === player && board[2][2]) {
     return true;
@@ -38,9 +39,11 @@ export function winningDiagonal(board, player) {
     return true;
   }
 }
+
 export function winningVertical(board, player) {
   let col;
   let count = 0;
+
   for (let i = 0; i < board.length; i++) {
     for (let j = 0; j < board[i].length; j++) {
       if (board[i][j] === player && count === 0) {
@@ -54,18 +57,23 @@ export function winningVertical(board, player) {
       return true;
     }
   }
+
   return false;
 }
+
 export function winningGame(board, player) {
   let horizontal = winningHorizonal(board, player);
   let vertical = winningVertical(board, player);
   let diagonal = winningDiagonal(board, player);
+
   if (horizontal === true) {
     return "Tu as gagné " + player;
   }
+
   if (vertical === true) {
     return "Tu as gagné " + player;
   }
+
   if (diagonal === true) {
     return "Tu as gagné " + player;
   } else {
@@ -73,11 +81,16 @@ export function winningGame(board, player) {
   }
 }
 
-export function aiPlayAPawn(board, player, randomNumber) {
-  const row = Math.floor(randomNumber() * 1);
-  const column = Math.floor(randomNumber() * 1);
-  return playAPawn(board, row, column, player);
+/**
+ * Should play a pawn with the given randomNumber
+ * And return the new board
+ */
+export function aiPlayAPawn(board, player, rowSeed, columnSeed) {
+  const row = Math.floor(rowSeed() * 3)
+  const column = Math.floor(columnSeed() * 3)
+  const result = playAPawn(board, row, column, player);
 
+  return result
 }
 
-console.log(aiPlayAPawn([["X", "", ""], ["", "", ""], ["", "", ""]], "O", () => 0.9), "call");
+/* console.log(aiPlayAPawn([["X", "", ""], ["", "", ""], ["", "", ""]], "O", () => 0.9, () => 0.5)); */

@@ -1,100 +1,33 @@
 import {
-  generateBoard,
-  playAPawn,
-  winningGame,
-  winningHorizonal,
-  winningDiagonal,
-  winningVertical,
   aiPlayAPawn
 } from "./index";
 
-describe("Should have a morpion grid", () => {
-  const res = generateBoard();
-  test("should return a gameboard of 3 rows", () => {
-    expect(res.length).toEqual(3);
-  });
-  test("should return an empty gameboard of 3 column * 3 row", () => {
-    expect(res).toEqual([["", "", ""], ["", "", ""], ["", "", ""]]);
-  });
-});
-describe("Should play a pawn", () => {
-  const board = generateBoard();
-
-  test("should return board modified with player", () => {
-    expect(playAPawn(board, 0, 0, "X")).toEqual([
-      ["X", "", ""],
-      ["", "", ""],
-      ["", "", ""]
-    ]);
-  });
-  test("should return board modified with playerTwo", () => {
-    expect(playAPawn(board, 1, 0, "O")).toEqual([
-      ["X", "", ""],
-      ["O", "", ""],
-      ["", "", ""]
-    ]);
-  });
-  test("should don't modify a pawn already played", () => {
-    expect(playAPawn(board, 1, 0, "X")).toEqual([
-      ["X", "", ""],
-      ["O", "", ""],
-      ["", "", ""]
-    ]);
-  });
-});
-describe("should win a party with 3 same pawns line up different ways", () => {
-  test("should win a party with 3 X pawns line up horizontal way", () => {
-    const board = [["X", "X", "X"], ["", "", ""], ["", "", ""]];
-    expect(winningHorizonal(board, "X")).toEqual(true);
-  });
-  test("should win a party with 3 O pawns line up diagonal way", () => {
-    const board = [["O", "", ""], ["", "O", ""], ["", "", "O"]];
-    expect(winningDiagonal(board, "O")).toEqual(true);
-  });
-  test("should win a party with 3 O pawns line up diagonal way", () => {
-    const board = [["", "", "O"], ["", "O", ""], ["O", "", "="]];
-    expect(winningDiagonal(board, "O")).toEqual(true);
-  });
-  test("should win a party with 3 X pawns line up vertical way", () => {
-    const board = [["", "", "X"], ["", "", "X"], ["", "", "X"]];
-    expect(winningVertical(board, "X")).toEqual(true);
-  });
-  test("should win a party with 3 X pawns line up vertical way", () => {
-    const board = [["X", "", ""], ["", "X", ""], ["X", "", ""]];
-    expect(winningVertical(board, "X")).toEqual(false);
-  });
-  test("win sentence", () => {
-    const board = [["X", "", ""], ["", "X", ""], ["X", "", ""]];
-    expect(winningGame(board, "X")).toEqual("Tu as perdu X");
-  });
-  test("win sentence", () => {
-    const board = [["O", "", ""], ["", "O", ""], ["", "", "O"]];
-    expect(winningGame(board, "O")).toEqual("Tu as gagné O");
-  });
-});
-describe("AI place a pawn", () => {
-  xtest("AI place a pawn", () => {
+describe("aiPlaceAPawn method", () => {
+  test("should play a pawn in the middle of the board", () => {
     const board = [["", "", ""], ["", "", ""], ["", "", ""]];
-    expect(aiPlayAPawn(board, "O", () => 0.5)).toEqual([
+
+    expect(aiPlayAPawn(board, "O", () => 0.5, () => 0.5)).toEqual([
       ["", "", ""],
       ["", "O", ""],
       ["", "", ""]
     ]);
   });
-  test("AI place a pawn after a player's round", () => {
+
+  test("should play a pawn on the first row, second column", () => {
     const board = [["X", "", ""], ["", "", ""], ["", "", ""]];
-    expect(aiPlayAPawn(board, "O", () => 0.2)).toEqual([
+    expect(aiPlayAPawn(board, "O", () => 0, () => 0.5)).toEqual([
       ["X", "O", ""],
       ["", "", ""],
       ["", "", ""]
     ]);
   });
-  xtest("AI don't place a pawn on other pawn", () => {
+
+  test("AI don't place a pawn on other pawn", () => {
     const board = [["X", "", ""], ["", "", ""], ["", "", ""]];
-    expect(aiPlayAPawn(board, "O", () => 0.5)).toEqual([
+    expect(aiPlayAPawn(board, "O", () => 0.8, () => 0.5)).toEqual([
       ["X", "", ""],
-      ["", "O", ""],
-      ["", "", ""]
+      ["", "", ""],
+      ["", "O", ""]
     ]);
   });
 });
