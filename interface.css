@@ -3,16 +3,16 @@ body {
   justify-content: center;
 }
 .container {
-  height: 400px;
-  width: 500px;
-  margin: 6em;
+  height: 500px;
+  width: 600px;
+  display: grid;
+  grid-template-columns: 200px 200px 200px;
+  border: 1px solid black;
+  margin-top: 5%;
 }
-.row {
-  height: 134px;
-  border: solid black;
+
+.container >.row > div{
+border:0.6px solid black;
+height: 33.2%;
 }
-.case {
-  height: 100%;
-  width: 166px;
-  border-right: solid black;
-}
+
