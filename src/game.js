@@ -1,3 +1,12 @@
+export function initializeInterface() {
+  const grid = Array.from(document.getElementsByClassName("case"))
+  grid.map((cell, index) => {
+    cell.addEventListener("click", playAPawn)
+    console.log(index);
+  })
+  console.log(grid)
+}
+
 export function generateBoard() {
   let grid = new Array(
     new Array("", "", ""),
@@ -8,7 +17,8 @@ export function generateBoard() {
 }
 
 export function playAPawn(board, row, column, player) {
-
+  console.log("click");
+  console.log(board, row, column, player);
   if (board[row][column] === "") {
     board[row][column] = player
   }
