@@ -1,3 +1,3 @@
-import { initializeInterface } from './game.js';
+import { initializeGame } from './game.js';
 
-initializeInterface()
+initializeGame()

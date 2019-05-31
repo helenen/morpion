@@ -1,10 +1,11 @@
-export function initializeInterface() {
-  const grid = Array.from(document.getElementsByClassName("case"))
+export function initializeGame() {
+  const board = generateBoard()
+  const grid = Array.from(document.getElementsByClassName("box"))
   grid.map((cell, index) => {
-    cell.addEventListener("click", playAPawn)
-    console.log(index);
+    cell.addEventListener("click", playAPawn.bind(null, board, index, "X"))
+
   })
-  console.log(grid)
+
 }
 
 export function generateBoard() {
@@ -16,11 +17,77 @@ export function generateBoard() {
   return grid;
 }
 
-export function playAPawn(board, row, column, player) {
-  console.log("click");
-  console.log(board, row, column, player);
-  if (board[row][column] === "") {
-    board[row][column] = player
+function getPosition(index) {
+  const coordinates = {
+    0: () => {
+      return {
+        row: 0,
+        column: 0
+      }
+    },
+    1: () => {
+      return {
+        row: 1,
+        column: 0
+      }
+    },
+    2: () => {
+      return {
+        row: 2,
+        column: 0
+      }
+    },
+    3: () => {
+      return {
+        row: 0,
+        column: 1
+      }
+    },
+    4: () => {
+      return {
+        row: 1,
+        column: 1
+      }
+    },
+    5: () => {
+      return {
+        row: 2,
+        column: 1
+      }
+    },
+    6: () => {
+      return {
+        row: 0,
+        column: 2
+      }
+    },
+    7: () => {
+      return {
+        row: 1,
+        column: 2
+      }
+    },
+    8: () => {
+      return {
+        row: 2,
+        column: 2
+      }
+    }
+  }
+
+  const coordinate = coordinates[index];
+  return coordinate();
+}
+
+export function playAPawn(board, index, player) {
+  //position.row
+  const coordinates = getPosition(index);
+  console.log(player);
+
+  const boxGrid = document.getElementById(`box${index}`)
+  boxGrid.innerHTML = player;
+  if (board[coordinates.row][coordinates.column] === "") {
+    board[coordinates.row][coordinates.column] = player
   }
   return board
 }
