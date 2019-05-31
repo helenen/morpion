@@ -1,8 +1,11 @@
+// Determines the player's turn
+let player = "X"
+
 export function initializeGame() {
   const board = generateBoard()
   const grid = Array.from(document.getElementsByClassName("box"))
   grid.map((cell, index) => {
-    cell.addEventListener("click", playAPawn.bind(null, board, index, "X"))
+    cell.addEventListener("click", playAPawn.bind(null, board, index))
 
   })
 
@@ -79,16 +82,34 @@ function getPosition(index) {
   return coordinate();
 }
 
-export function playAPawn(board, index, player) {
-  //position.row
+/**
+ * Should play a pawn at the given index
+ * Returns the new board
+ */
+export function playAPawn(board, index) {
+  // Get coordinates based on index
   const coordinates = getPosition(index);
-  console.log(player);
 
+  // Get the DOM node in which we want to play
   const boxGrid = document.getElementById(`box${index}`)
-  boxGrid.innerHTML = player;
+
+  // Play the pawn
   if (board[coordinates.row][coordinates.column] === "") {
+    boxGrid.innerHTML = player;
     board[coordinates.row][coordinates.column] = player
   }
+
+  // Change the player's turn
+  if (player === "X") {
+    player = "O"
+  } else {
+    player = "X"
+  }
+
+  // Check if there is a winner
+  const message = winningGame(board, player)
+  console.log(message)
+
   return board
 }
 
@@ -138,21 +159,22 @@ export function winningVertical(board, player) {
   return false;
 }
 
+// TODO: Fix this function
 export function winningGame(board, player) {
   let horizontal = winningHorizonal(board, player);
   let vertical = winningVertical(board, player);
   let diagonal = winningDiagonal(board, player);
 
   if (horizontal === true) {
-    return "Tu as gagné " + player;
+    return "Tu as gagné ho " + player;
   }
 
   if (vertical === true) {
-    return "Tu as gagné " + player;
+    return "Tu as gagné ve " + player;
   }
 
   if (diagonal === true) {
-    return "Tu as gagné " + player;
+    return "Tu as gagné di " + player;
   } else {
     return "Tu as perdu " + player;
   }
