@@ -1,5 +1,5 @@
 // Determines the player's turn
-let player = "X"
+let player = "X";
 
 export function initializeGame() {
   const board = generateBoard()
@@ -108,7 +108,7 @@ export function playAPawn(board, index) {
 
   // Check if there is a winner
   const message = winningGame(board, player)
-  console.log(message)
+  console.log(board, message, 'message')
 
   return board
 }
@@ -127,6 +127,7 @@ export function winningHorizonal(board, player) {
       return true;
     }
   }
+  // console.log(board, 'boardHo');
   return false;
 }
 
@@ -136,48 +137,50 @@ export function winningDiagonal(board, player) {
   } else if (board[0][2] === player && board[1][1] === player && board[2][0]) {
     return true;
   }
+  return false;
+  //console.log(board, 'boardDia');
 }
 
 export function winningVertical(board, player) {
+  //nbre de fois où je tombe sur un pion
+  let count;
+  //colonne
   let col;
-  let count = 0;
 
+  //parcourir les tableaux
   for (let i = 0; i < board.length; i++) {
-    for (let j = 0; j < board[i].length; j++) {
-      if (board[i][j] === player && count === 0) {
-        count++;
-        col = board[i][j];
-        break;
-      } else if (count > 0 && col === player) {
-        count++;
-        break;
+    for (let j = 0; j < board[i]; j++) {
+      if (board[i][j] === player && count <= 0) {
+        count += 1
+        col = j
+      } else if (count > 0 && board[i][col] === player) {
+        count += 1
+
       }
-      return true;
     }
   }
-
-  return false;
 }
 
 // TODO: Fix this function
 export function winningGame(board, player) {
+
   let horizontal = winningHorizonal(board, player);
   let vertical = winningVertical(board, player);
   let diagonal = winningDiagonal(board, player);
 
-  if (horizontal === true) {
+  if (horizontal) {
     return "Tu as gagné ho " + player;
   }
 
-  if (vertical === true) {
+  if (vertical) {
     return "Tu as gagné ve " + player;
   }
 
-  if (diagonal === true) {
-    return "Tu as gagné di " + player;
-  } else {
-    return "Tu as perdu " + player;
+  if (diagonal) {
+    return "Tu as gagné " + player;
   }
+
+  return null;
 }
 
 /**
