@@ -3,7 +3,7 @@ import {
     winningHorizonal,
     winningDiagonal,
     winningVertical,
-} from "./game";
+} from "../scripts/winning";
 
 describe("wining", () => {
     describe("winningHorizontal", () => {

@@ -1,6 +1,6 @@
 import {
     generateBoard,
-} from "./game";
+} from "../scripts/game";
 
 
 describe("Should have a morpion grid", () => {
