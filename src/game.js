@@ -97,17 +97,16 @@ export function playAPawn(board, index) {
     board[coordinates.row][coordinates.column] = player;
   }
 
+  // Check if there is a winner
+  const message = winningGame(board, player);
+  console.log(board, "message");
+
   // Change the player's turn
   if (player === "X") {
     player = "O";
   } else {
     player = "X";
   }
-
-  // Check if there is a winner
-  const message = winningGame(board, player);
-  console.log(board, "message");
-
   return board;
 }
 
@@ -140,28 +139,72 @@ export function winningDiagonal(board, player) {
 }
 
 export function winningVertical(board, player) {
-  //nbre de fois où je tombe sur un pion
-  let count;
-  //colonne
-  let col;
+  let count = 0;
 
-  //parcourir les tableaux
-  for (let i = 0; i < board.length; i++) {
-    for (let j = 0; j < board[i]; j++) {
-      if (board[i][j] === player && count < 0) {
-        count += 1;
-        col = j;
-      } else if (count > 0 && board[i][col] === player) {
-        count += 1;
-      } else if (board[i][col] === "") {
-        count = 0;
-
-        break;
-      }
-      console.log(count, "count");
-    }
+  //première colonne
+  if (board[0][0] === player && count <= 0) {
+    count += 1
   }
+  if (board[1][0] === player && count > 0) {
+    count += 1
+  }
+  if (board[2][0] === player && count > 0) {
+    count += 1
+  }
+  //deuxième colonne
+  if (board[0][1] === player && count <= 0) {
+    count += 1
+  }
+  if (board[1][1] === player && count > 0) {
+    count += 1
+  }
+  if (board[2][1] === player && count > 0) {
+    count += 1
+  }
+
+  //troisième colonne
+  if (board[0][2] === player && count <= 0) {
+    count += 1
+  }
+  if (board[1][2] === player && count > 0) {
+    count += 1
+  }
+  if (board[2][2] === player && count > 0) {
+    count += 1
+  }
+
+
+  console.log(count, "count")
+  if (count === 3) {
+    return true
+  }
+
+
 }
+
+// export function winningVertical(board, player) {
+//   let count = 0;
+//   let col;
+
+//   for (let i = 0; i < board.length; i++) {
+//     for (let j = 0; j < board[i].length; j++) {
+
+//       if (board[i][j] === player && count <= 0) {
+//         count += 1
+//         col = j
+//       }
+
+//       if (board[i][col] === player && count > 0) {
+//         count += 1
+//         break
+//       }
+//       else if (board[i][col] === "") {
+//         count = 0;
+//       }
+
+//     } console.log(count, "count1");
+//   }
+// }
 
 // TODO: Fix this function
 export function winningGame(board, player) {
