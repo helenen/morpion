@@ -4,8 +4,8 @@ import { winningGame } from "./winning.js"
 // Empty if no one has won
 let winner = ""
 
-// TODO: Stop the game once you have won
-// TODO: Display alert AFTER the player has played
+// TODO: modal display name's winner with button for reload board
+// TODO: Display alert AFTER the player has played X
 // TODO: Player shouldn't be able to play BEFORE the AI has played
 
 export function initializeGame() {
@@ -16,7 +16,7 @@ export function initializeGame() {
       playAPawn(board, index, "X")
 
       if (winner !== "") {
-        alert(winner)
+        setTimeout(() => alert(winner), 500)
         return
       }
 
@@ -103,7 +103,7 @@ function getPosition(index) {
  * Returns the new board
  */
 export function playAPawn(board, index, player) {
-  console.log(index);
+  //console.log(index);
   // Get coordinates based on index
   const coordinates = getPosition(index);
 
@@ -134,15 +134,23 @@ export function aiPlayAPawn(board, player, seed) {
   let coord = getPosition(randIndex)
 
   // Check if the coordinates are valid
-  while (board[coord.row][coord.column] !== "") {
-    randIndex = Math.floor(seed() * 9);
-    coord = getPosition(randIndex)
-  }
+  // while (board[coord.row][coord.column] !== "") {
+  //   randIndex = Math.floor(seed() * 9);
+  //   coord = getPosition(randIndex)
+  // }é
 
-  console.log(`PLAYING ON ${coord}`);
+  //console.log(`PLAYING ON ${coord}`);
   const result = playAPawn(board, randIndex, player);
 
   return result;
 }
 
-/* console.log(aiPlayAPawn([["X", "", ""], ["", "", ""], ["", "", ""]], "O", () => 0.9, () => 0.5)); */
+/**
+ * 
+ */
+export function modal() {
+
+
+}
+
+modal()
