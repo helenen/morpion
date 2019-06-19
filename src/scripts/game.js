@@ -4,8 +4,8 @@ import { winningGame } from "./winning.js";
 // Empty if no one has won
 let winner = "";
 
-// TODO: Stop the game once you have won
-// TODO: Display alert AFTER the player has played
+// TODO: modal display name's winner with button for reload board
+// TODO: Display alert AFTER the player has played X
 // TODO: Player shouldn't be able to play BEFORE the AI has played
 
 export function initializeGame() {
@@ -16,7 +16,7 @@ export function initializeGame() {
       playAPawn(board, index, "X");
 
       if (winner !== "") {
-        alert(winner);
+        setTimeout(() => modal(), 500);
         return;
       }
 
@@ -103,7 +103,7 @@ function getPosition(index) {
  * Returns the new board
  */
 export function playAPawn(board, index, player) {
-  console.log(index);
+  //console.log(index);
   // Get coordinates based on index
   const coordinates = getPosition(index);
 
@@ -138,7 +138,23 @@ export function aiPlayAPawn(board, player, seed) {
     randIndex = Math.floor(seed() * 9);
     coord = getPosition(randIndex);
   }
+
+  //console.log(`PLAYING ON ${coord}`);
   const result = playAPawn(board, randIndex, player);
 
   return result;
+}
+
+/** display a modal with winner's name
+ *
+ */
+export function modal() {
+  const modalText = document.createElement("P");
+
+  const modalBlock = document.getElementById("modal").appendChild(modalText);
+  console.log(modalBlock);
+  modalBlock.innerHTML = "Tu as gagné " + winner;
+  modalBlock.style.visibility = "visible"; // affiche modal
+  const bigContainer = document.getElementById("big-container");
+  bigContainer.style.display = "block";
 }
