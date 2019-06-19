@@ -1,8 +1,8 @@
-import { winningGame } from "./winning.js"
+import { winningGame } from "./winning.js";
 
 // The player that has won the game
 // Empty if no one has won
-let winner = ""
+let winner = "";
 
 // TODO: Stop the game once you have won
 // TODO: Display alert AFTER the player has played
@@ -13,16 +13,16 @@ export function initializeGame() {
   const grid = Array.from(document.getElementsByClassName("box"));
   grid.map((cell, index) => {
     cell.addEventListener("click", () => {
-      playAPawn(board, index, "X")
+      playAPawn(board, index, "X");
 
       if (winner !== "") {
-        alert(winner)
-        return
+        alert(winner);
+        return;
       }
 
       setTimeout(() => {
-        aiPlayAPawn(board, "O", Math.random)
-      }, 1000)
+        aiPlayAPawn(board, "O", Math.random);
+      }, 1000);
     });
   });
 }
@@ -131,18 +131,14 @@ export function aiPlayAPawn(board, player, seed) {
   let randIndex = Math.floor(seed() * 9);
 
   // Get coordinates based on the random index
-  let coord = getPosition(randIndex)
+  let coord = getPosition(randIndex);
 
   // Check if the coordinates are valid
   while (board[coord.row][coord.column] !== "") {
     randIndex = Math.floor(seed() * 9);
-    coord = getPosition(randIndex)
+    coord = getPosition(randIndex);
   }
-
-  console.log(`PLAYING ON ${coord}`);
   const result = playAPawn(board, randIndex, player);
 
   return result;
 }
-
-/* console.log(aiPlayAPawn([["X", "", ""], ["", "", ""], ["", "", ""]], "O", () => 0.9, () => 0.5)); */
