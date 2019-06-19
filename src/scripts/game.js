@@ -16,7 +16,7 @@ export function initializeGame() {
       playAPawn(board, index, "X")
 
       if (winner !== "") {
-        setTimeout(() => alert(winner), 500)
+        setTimeout(() => modal(), 500)
         return
       }
 
@@ -145,12 +145,19 @@ export function aiPlayAPawn(board, player, seed) {
   return result;
 }
 
-/**
+/** display a modal with winner's name
  * 
  */
 export function modal() {
 
+  const modalBlock = document.createElement("P");// crée un element
+  modalBlock.innerText = "Tu as gagné " + winner; // ajoute un text à l'élément
+  document.getElementsByClassName('modal')[0].appendChild(modalBlock);// place l'élément dans la class modal
+
+  const modalContainer = document.getElementsByClassName("modalContainer");
+  console.log(modalContainer);
+  modalContainer.style.display = 'block';// affiche modal
+
 
 }
 
-modal()

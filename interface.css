@@ -1,6 +1,9 @@
 body {
-  display: flex;
+  display:flex;
+  flex-wrap: wrap;
   justify-content: center;
+  align-items: center;
+  margin: 15%;
 }
 .container {
   height: 500px;
@@ -13,4 +16,12 @@ body {
 .container >.row > div{
 border:0.6px solid black;
 height: 33.2%;
+}
+.modalContainer{
+  display: none;
+  height: 50px;
+  width:90px;
+  border: 1px solid black;
+  border-radius: 5px;
+ 
 }
