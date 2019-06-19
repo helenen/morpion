@@ -14,14 +14,31 @@ body {
   margin-top: 5%;
 }
 .container >.row > div{
-border:0.6px solid black;
-height: 33.2%;
+  border:0.6px solid black;
+  height: 33.2%;
+}
+#big-container{
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top: 100px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  justify-content: center;
+  align-items: center;
 }
 #modal{
-  display: none;
-  height: 50px;
-  width:90px;
-  border: 1px solid black;
+  display: flex;
+  justify-content: center;
+  height: 10%;
+  width:80%;
   border-radius: 5px;
- 
+  background-color:white;
+}
+#modal > p {
+  font-size: 30px;
 }

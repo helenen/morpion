@@ -150,9 +150,14 @@ export function aiPlayAPawn(board, player, seed) {
  */
 export function modal() {
 
-  const modalBlock = document.getElementById("modal");
-  console.log("modalBlock", modalBlock);
-  modalBlock.style.display = 'block';// affiche modal
+  const modalText = document.createElement("P");
+
+  const modalBlock = document.getElementById("modal").appendChild(modalText);
+  console.log(modalBlock);
+  modalBlock.innerHTML = "Tu as gagné " + winner;
+  modalBlock.style.visibility = 'visible';// affiche modal
+  const bigContainer = document.getElementById("big-container");
+  bigContainer.style.display = "block";
 
 
 }
