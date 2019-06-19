@@ -17,7 +17,7 @@ body {
 border:0.6px solid black;
 height: 33.2%;
 }
-.modalContainer{
+#modal{
   display: none;
   height: 50px;
   width:90px;
