@@ -4,9 +4,11 @@ import { winningGame } from "./winning.js";
 // Empty if no one has won
 let winner = "";
 
-// TODO: modal display name's winner with button for reload board
+// TODO: modal display name's winner with button for reload board X
 // TODO: Display alert AFTER the player has played X
 // TODO: Player shouldn't be able to play BEFORE the AI has played
+// TODO: fix no display winner in modal 1/3
+//à chaque tour ia recupère un tab des cases vide  le map et fait un random du tab
 
 export function initializeGame() {
   const board = generateBoard();
@@ -22,7 +24,7 @@ export function initializeGame() {
 
       setTimeout(() => {
         aiPlayAPawn(board, "O", Math.random);
-      }, 1000);
+      }, 400);
     });
   });
 }
@@ -103,7 +105,7 @@ function getPosition(index) {
  * Returns the new board
  */
 export function playAPawn(board, index, player) {
-  //console.log(index);
+
   // Get coordinates based on index
   const coordinates = getPosition(index);
 
@@ -127,19 +129,18 @@ export function playAPawn(board, index, player) {
  * And return the new board
  */
 export function aiPlayAPawn(board, player, seed) {
+
+  //filtre les cases vide 
+  let
+
   // Get random index between 0 and 8
-  let randIndex = Math.floor(seed() * 9);
+  // let randIndex = Math.floor(seed() * 9);
+  // //let tabEmptyIndex = [];
+  // // Get coordinates based on the random index
+  // let coord = getPosition(randIndex);
 
-  // Get coordinates based on the random index
-  let coord = getPosition(randIndex);
 
-  // Check if the coordinates are valid
-  while (board[coord.row][coord.column] !== "") {
-    randIndex = Math.floor(seed() * 9);
-    coord = getPosition(randIndex);
-  }
 
-  //console.log(`PLAYING ON ${coord}`);
   const result = playAPawn(board, randIndex, player);
 
   return result;
@@ -149,12 +150,21 @@ export function aiPlayAPawn(board, player, seed) {
  *
  */
 export function modal() {
-  const modalText = document.createElement("P");
 
-  const modalBlock = document.getElementById("modal").appendChild(modalText);
-  console.log(modalBlock);
-  modalBlock.innerHTML = "Tu as gagné " + winner;
+  const modalText = document.createElement("P");// cree un element <p></p>
+  const buttonReload = document.createElement("BUTTON");// cree un element button
+  const modalBlock =
+    document.getElementById("modal").appendChild(modalText);//donne l'élement <p></p> à la classe modal
+  document.getElementById("modal").appendChild(buttonReload);
+  const mainContainer = document.getElementById("mainContainer");
+
+
+  modalBlock.innerHTML = "Tu as gagné " + winner;// écrire qui gagne
   modalBlock.style.visibility = "visible"; // affiche modal
-  const bigContainer = document.getElementById("big-container");
-  bigContainer.style.display = "block";
+
+  mainContainer.style.display = "block";// affiche main container
+
+  buttonReload.onclick = () => location.reload();// refresh document
+  buttonReload.innerHTML = "refresh";
+
 }

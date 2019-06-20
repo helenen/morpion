@@ -17,7 +17,7 @@ body {
   border: 0.6px solid black;
   height: 33.2%;
 }
-#big-container {
+#mainContainer {
   display: none; /* Hidden by default */
   position: fixed; /* Stay in place */
   z-index: 1; /* Sit on top */
@@ -34,13 +34,18 @@ body {
 }
 #modal {
   display: flex;
-  justify-content: center;
   height: 10%;
-  width: 80%;
+  width: 50%;
   border-radius: 5px;
   background-color: white;
   align-items: center;
 }
 #modal > p {
-  font-size: 60px;
+  font-size: 40px;
+  margin-left: 5%;
+}
+#modal > button{
+  font-size: 20px;
+  margin-left: 30%;
+
 }
