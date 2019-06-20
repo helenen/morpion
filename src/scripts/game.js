@@ -105,7 +105,6 @@ function getPosition(index) {
  * Returns the new board
  */
 export function playAPawn(board, index, player) {
-
   // Get coordinates based on index
   const coordinates = getPosition(index);
 
@@ -129,17 +128,14 @@ export function playAPawn(board, index, player) {
  * And return the new board
  */
 export function aiPlayAPawn(board, player, seed) {
+  board = generateBoard();
+  let randIndex = Math.floor(seed() * 9);
 
-  //filtre les cases vide 
-  let
+  board.filter((cell, coord) => {});
 
   // Get random index between 0 and 8
-  // let randIndex = Math.floor(seed() * 9);
-  // //let tabEmptyIndex = [];
+
   // // Get coordinates based on the random index
-  // let coord = getPosition(randIndex);
-
-
 
   const result = playAPawn(board, randIndex, player);
 
@@ -150,21 +146,17 @@ export function aiPlayAPawn(board, player, seed) {
  *
  */
 export function modal() {
-
-  const modalText = document.createElement("P");// cree un element <p></p>
-  const buttonReload = document.createElement("BUTTON");// cree un element button
-  const modalBlock =
-    document.getElementById("modal").appendChild(modalText);//donne l'élement <p></p> à la classe modal
+  const modalText = document.createElement("P"); // cree un element <p></p>
+  const buttonReload = document.createElement("BUTTON"); // cree un element button
+  const modalBlock = document.getElementById("modal").appendChild(modalText); //donne l'élement <p></p> à la classe modal
   document.getElementById("modal").appendChild(buttonReload);
   const mainContainer = document.getElementById("mainContainer");
 
-
-  modalBlock.innerHTML = "Tu as gagné " + winner;// écrire qui gagne
+  modalBlock.innerHTML = "Tu as gagné " + winner; // écrire qui gagne
   modalBlock.style.visibility = "visible"; // affiche modal
 
-  mainContainer.style.display = "block";// affiche main container
+  mainContainer.style.display = "block"; // affiche main container
 
-  buttonReload.onclick = () => location.reload();// refresh document
+  buttonReload.onclick = () => location.reload(); // refresh document
   buttonReload.innerHTML = "refresh";
-
 }
