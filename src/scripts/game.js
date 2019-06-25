@@ -33,14 +33,15 @@ export function initializeGame() {
  * Returns the new board
  */
 export function playAPawn(grid, index, player) {
-
   // Get the DOM node in which we want to play
-  const boxGrid = document.getElementById(`box${index}`);
-  console.log(document.getElementById(`box${index}`));
-  if (boxGrid.innerText === "") {
-    boxGrid.innerHTML = player;
-    boxGrid === player;
-  }
+  const boxGrid = Array.from(document.getElementsByClassName("box"));
+  boxGrid.filter((box, index) => {});
+  //console.log(boxGrid);
+  //console.log(document.getElementById(`box${index}`));
+  // if (boxGrid.innerText === "") {
+  //   boxGrid.innerHTML = player;
+  //   boxGrid === player;
+  // }
 
   // Check if there is a winner
   winner = winningGame(grid, player);
@@ -53,14 +54,11 @@ export function playAPawn(grid, index, player) {
  * And return the new board
  */
 export function aiPlayAPawn(grid, player, seed) {
-
-  //filtre les cases vide 
+  //filtre les cases vide
   grid = Array.from(document.getElementsByClassName("box"));
-
 
   let emptyGrid = grid.filter(box => box.innerText === "");
   let randIndex = Math.floor(seed * emptyGrid.length);
-
 
   // Get random index between 0 and 8
 
@@ -76,21 +74,17 @@ export function aiPlayAPawn(grid, player, seed) {
  *
  */
 export function modal() {
-
-  const modalText = document.createElement("P");// cree un element <p></p>
-  const buttonReload = document.createElement("BUTTON");// cree un element button
-  const modalBlock =
-    document.getElementById("modal").appendChild(modalText);//donne l'élement <p></p> à la classe modal
+  const modalText = document.createElement("P"); // cree un element <p></p>
+  const buttonReload = document.createElement("BUTTON"); // cree un element button
+  const modalBlock = document.getElementById("modal").appendChild(modalText); //donne l'élement <p></p> à la classe modal
   document.getElementById("modal").appendChild(buttonReload);
   const mainContainer = document.getElementById("mainContainer");
 
-
-  modalBlock.innerHTML = "Tu as gagné " + winner;// écrire qui gagne
+  modalBlock.innerHTML = "Tu as gagné " + winner; // écrire qui gagne
   modalBlock.style.visibility = "visible"; // affiche modal
 
-  mainContainer.style.display = "block";// affiche main container
+  mainContainer.style.display = "block"; // affiche main container
 
-  buttonReload.onclick = () => location.reload();// refresh document
+  buttonReload.onclick = () => location.reload(); // refresh document
   buttonReload.innerHTML = "refresh";
-
 }
