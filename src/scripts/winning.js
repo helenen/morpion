@@ -1,15 +1,15 @@
 /**
  * Checks if the player has won horizontally
- * @param {*} board 
+ * @param {*} grid 
  * @param {*} player 
  */
-export function winningHorizonal(board, player) {
+export function winningHorizonal(grid, player) {
     let count = 0;
 
-    for (let i = 0; i < board.length; i++) {
+    for (let i = 0; i < grid.length; i++) {
         count = 0;
-        for (let y = 0; y < board[i].length; y++) {
-            if (board[i][y] === player) {
+        for (let y = 0; y < grid[i].length; y++) {
+            if (grid[i][y] === player) {
                 count += 1;
             }
         }
@@ -17,61 +17,61 @@ export function winningHorizonal(board, player) {
             return true;
         }
     }
-    // console.log(board, 'boardHo');
+    // console.log(grid, 'gridHo');
     return false;
 }
 
 /**
  * Checks if the player has won diagonally
- * @param {*} board 
+ * @param {*} grid 
  * @param {*} player 
  */
-export function winningDiagonal(board, player) {
-    if (board[0][0] === player && board[1][1] === player && board[2][2]) {
+export function winningDiagonal(grid, player) {
+    if (grid[0][0] === player && grid[1][1] === player && grid[2][2]) {
         return true;
-    } else if (board[0][2] === player && board[1][1] === player && board[2][0]) {
+    } else if (grid[0][2] === player && grid[1][1] === player && grid[2][0]) {
         return true;
     }
     return false;
-    //console.log(board, 'boardDia');
+    //console.log(grid, 'gridDia');
 }
 
 /**
  * Checks if the player has won vertically
  * Returns true if he has won
  * False otherwise
- * @param {*} board 
+ * @param {*} grid 
  * @param {*} player 
  */
-export function winningVertical(board, player) {
+export function winningVertical(grid, player) {
     // première colonne
-    if (board[0][0] === player &&
-        board[1][0] === player &&
-        board[2][0] === player) {
+    if (grid[0][0] === player &&
+        grid[1][0] === player &&
+        grid[2][0] === player) {
         return true
     }
 
     // deuxième colonne
-    if (board[0][1] === player &&
-        board[1][1] === player &&
-        board[2][1] === player) {
+    if (grid[0][1] === player &&
+        grid[1][1] === player &&
+        grid[2][1] === player) {
         return true
     }
 
     // troisième colonne
-    if (board[0][2] === player &&
-        board[1][2] === player &&
-        board[2][2] === player) {
+    if (grid[0][2] === player &&
+        grid[1][2] === player &&
+        grid[2][2] === player) {
         return true
     }
 
     return false
 }
 
-export function winningGame(board, player) {
-    let horizontal = winningHorizonal(board, player);
-    let vertical = winningVertical(board, player);
-    let diagonal = winningDiagonal(board, player);
+export function winningGame(grid, player) {
+    let horizontal = winningHorizonal(grid, player);
+    let vertical = winningVertical(grid, player);
+    let diagonal = winningDiagonal(grid, player);
 
     if (horizontal) {
         return player;
