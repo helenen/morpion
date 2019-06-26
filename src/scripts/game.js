@@ -14,7 +14,7 @@ export function initializeGame() {
   const grid = Array.from(document.getElementsByClassName("box"));
   grid.map((cell, index) => {
     cell.addEventListener("click", () => {
-      playAPawn(index, "X");
+      playAPawn(grid, "X");
 
       if (winner !== "") {
         setTimeout(() => modal(), 500);
@@ -32,20 +32,43 @@ export function initializeGame() {
  * Should play a pawn at the given index
  * Returns the new board
  */
-export function playAPawn(grid, index, player) {
-  // Get the DOM node in which we want to play
-  const boxGrid = Array.from(document.getElementsByClassName("box"));
-  boxGrid.filter((box, index) => {});
-  //console.log(boxGrid);
-  //console.log(document.getElementById(`box${index}`));
-  // if (boxGrid.innerText === "") {
-  //   boxGrid.innerHTML = player;
-  //   boxGrid === player;
-  // }
+function getPosition(index) {
+  // index des box
+  switch (index) {
+    case '0': 1;
+      break;
+    case '1': 2;
+      break;
+    case '2': 3;
+      break;
+    case '3': 4;
+      break;
+    case '4': 5;
+      break;
+    case '5': 6;
+      break;
+    case '6': 7;
+      break;
+    case '7': 8;
+      break;
+    case '8': 9;
+      break;
+  }
+  return index;
 
+}
+export function playAPawn(grid, player) {
+  let index = getPosition();
+  // get back DOM elements
+  const box = document.querySelector(`#box${index}`)
+  console.log(box, "box");
   // Check if there is a winner
   winner = winningGame(grid, player);
 
+  if (box) {
+    box.innerHTML = player
+
+  }
   return grid;
 }
 
