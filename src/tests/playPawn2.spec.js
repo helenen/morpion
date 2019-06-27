@@ -1,7 +1,7 @@
 import {
     generateBoard,
     playPawn,
-} from "../scripts/game";
+} from "../scripts/game2";
 
 
 describe("Should play a pawn", () => {
@@ -39,4 +39,17 @@ describe("Should play a pawn", () => {
             ["", "", ""]
         ]);
     });
+    test("should return a error message when a player try to play on pawn played", () => {
+        const playedBoardTwo = [
+            ["X", "", ""],
+            ["O", "", ""],
+            ["", "", ""]
+        ];
+        expect(playPawn(playedBoardTwo, 1, 0, "X")).toEqual([
+            ["X", "", ""],
+            ["O", "", ""],
+            ["", "", ""]
+        ]) && expect(playPawn(playedBoardTwo, 1, 0, "X")).toEqual("error: can't play when a pawn is already played");
+
+    })
 });

@@ -14,6 +14,7 @@ export function initializeGame() {
   const grid = Array.from(document.getElementsByClassName("box"));
   grid.map((cell, index) => {
     cell.addEventListener("click", () => {
+      console.log(cell, index, "cell et index");
       playAPawn(grid, "X");
 
       if (winner !== "") {
@@ -54,20 +55,21 @@ function getPosition(index) {
     case '8': 9;
       break;
   }
+
   return index;
 
 }
 export function playAPawn(grid, player) {
-  let index = getPosition();
+  // get back positions
+
   // get back DOM elements
-  const box = document.querySelector(`#box${index}`)
-  console.log(box, "box");
+
+  //console.log(box, "box");
   // Check if there is a winner
   winner = winningGame(grid, player);
-
+  //put pawn in grid
   if (box) {
-    box.innerHTML = player
-
+    box.innerHTML === player
   }
   return grid;
 }
