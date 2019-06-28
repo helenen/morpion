@@ -2,6 +2,7 @@ import {
     aiPlayPawn
 } from "../scripts/game2";
 
+
 describe("aiPlaceAPawn method", () => {
     test("should play a pawn in the middle of the board", () => {
         const board = [["", "", ""], ["", "", ""], ["", "", ""]];
@@ -33,5 +34,7 @@ describe("aiPlaceAPawn method", () => {
 });
 
 describe("initialize board", () => {
+    test("should return a board by DOM", () => {
 
+    })
 })

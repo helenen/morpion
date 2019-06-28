@@ -1,3 +1,4 @@
+import { winningGame } from "./winning.js";
 
 let winner = "";
 
@@ -22,7 +23,7 @@ export function playPawn(board, row, column, player) {
         "error: can't play when a pawn is already played"
     }
     // winner
-    winner = winningGame(grid, player);
+    winner = winningGame(board, player);
 
     return board
 }
@@ -37,4 +38,25 @@ export function aiPlayPawn(board, player, rowSeed, columnSeed) {
     const result = playPawn(board, row, column, player);
 
     return result;
+}
+
+//initialize game board in the DOM
+export function initializeGame() {
+    //get back DOM's elements 
+    const grid = Array.from(document.getElementsByClassName("box"));
+    grid.map((cell, index) => {
+        cell.addEventListener("click", () => {
+            console.log(cell, index, "cell et index");
+            playAPawn(grid, "X");
+
+            if (winner !== "") {
+                setTimeout(() => modal(), 500);
+                return;
+            }
+
+            setTimeout(() => {
+                aiPlayAPawn("O", Math.random);
+            }, 400);
+        });
+    });
 }
