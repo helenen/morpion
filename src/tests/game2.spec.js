@@ -33,8 +33,10 @@ describe("aiPlaceAPawn method", () => {
     });
 });
 
-describe("initialize board", () => {
-    test("should return a board by DOM", () => {
-
-    })
-})
+// describe("initialize board", () => {
+//     test("should return a DOM's board", () => {
+//         const wrapper = shallow('box1');
+//         wrapper.find('box1').simulate('click');
+//         expect(wrapper).toBe(true);
+//     })
+// })
