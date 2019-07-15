@@ -2,7 +2,7 @@
 export function generateBoard() {
     let board = new Array(
         new Array("", "", ""),
-        new Array("", "X", ""),
+        new Array("", "", ""),
         new Array("", "", "")
     );
     return board;
@@ -18,7 +18,6 @@ export function playPawn(board, row, column, player) {
     } else {
         "error: can't play when a pawn is already played"
     }
-
     return board
 }
 

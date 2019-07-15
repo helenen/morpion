@@ -17,10 +17,19 @@ function generateInterface(board) {
             column.appendChild(box);
         }
     }
+}
+
+generateInterface(generateBoard())
+
+function playPawnDom() {
+
+    let box = Array.from(document.getElementsByClassName('box'))
+
+    box.map(e => {
+        e.addEventListener("click", () => { e.innerHTML = "X" })
+    });
 
 
 }
 
-
-
-generateInterface(generateBoard())
+playPawnDom()
