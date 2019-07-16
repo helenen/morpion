@@ -14,7 +14,7 @@ export function initializeGame() {
   const grid = Array.from(document.getElementsByClassName("box"));
   grid.map((cell, index) => {
     cell.addEventListener("click", () => {
-      console.log(cell, index, "cell et index");
+      //console.log(cell, index, "cell et index");
       playAPawn(grid, "X");
 
       if (winner !== "") {

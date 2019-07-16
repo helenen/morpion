@@ -1,4 +1,4 @@
-import { generateBoard } from './scripts/game2.js';
+import { generateBoard, playPawn } from './scripts/game2.js';
 
 function generateInterface(board) {
 
@@ -17,19 +17,26 @@ function generateInterface(board) {
             column.appendChild(box);
         }
     }
+
 }
 
 generateInterface(generateBoard())
 
-function playPawnDom() {
+function playPawnDom(board, player) {
 
     let box = Array.from(document.getElementsByClassName('box'))
 
     box.map(e => {
-        e.addEventListener("click", () => { e.innerHTML = "X" })
+
+        e.addEventListener("click", () => {
+            playPawn(board, "X");
+
+
+        })
+
     });
 
 
 }
 
-playPawnDom()
+playPawnDom(generateBoard(), "X")

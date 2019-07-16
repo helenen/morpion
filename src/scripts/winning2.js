@@ -17,7 +17,6 @@ export function winningHorizonal(board, player) {
             return true;
         }
     }
-    // console.log(board, 'boardHo');
     return false;
 }
 
@@ -33,7 +32,7 @@ export function winningDiagonal(board, player) {
         return true;
     }
     return false;
-    //console.log(board, 'boardDia');
+
 }
 
 /**
