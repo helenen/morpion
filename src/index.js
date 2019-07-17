@@ -22,17 +22,18 @@ function generateInterface(board) {
 
 generateInterface(generateBoard())
 
-function playPawnDom(board, player) {
+function playPawnDom(board) {
 
     let box = Array.from(document.getElementsByClassName('box'))
 
-    box.map(e => {
-
+    box.map((e, index) => {
         e.addEventListener("click", () => {
-            playPawn(board, "X");
-
-
+            playPawn(board, index, "X");
+            e.innerHTML = "X"
         })
+
+
+
 
     });
 

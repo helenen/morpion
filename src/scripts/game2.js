@@ -11,59 +11,47 @@ export function generateBoard() {
 
 function getPosition(index) {
     const coordinates = {
-        0: () => {
-            return {
-                row: 0,
-                column: 0
-            };
+        0: {
+            row: 0,
+            column: 0
         },
-        1: () => {
-            return {
-                row: 1,
-                column: 0
-            };
+        1: {
+            row: 1,
+            column: 0
         },
-        2: () => {
-            return {
-                row: 2,
-                column: 0
-            };
+        2: {
+            row: 2,
+            column: 0
         },
-        3: () => {
-            return {
-                row: 0,
-                column: 1
-            };
+        3: {
+            row: 0,
+            column: 1
+
         },
-        4: () => {
-            return {
-                row: 1,
-                column: 1
-            };
+        4: {
+            row: 1,
+            column: 1
+
         },
-        5: () => {
-            return {
-                row: 2,
-                column: 1
-            };
+        5: {
+            row: 2,
+            column: 1
+
         },
-        6: () => {
-            return {
-                row: 0,
-                column: 2
-            };
+        6: {
+            row: 0,
+            column: 2
+
         },
-        7: () => {
-            return {
-                row: 1,
-                column: 2
-            };
+        7: {
+            row: 1,
+            column: 2
+
         },
-        8: () => {
-            return {
-                row: 2,
-                column: 2
-            };
+        8: {
+            row: 2,
+            column: 2
+
         }
     };
 
@@ -73,15 +61,20 @@ function getPosition(index) {
 
 // play a pawn in board
 export function playPawn(board, index, player) {
+    let coordinates = getPosition(index);
 
-    // console.log(getPosition(index), "index");
+    console.log(coordinates.row, coordinates.column, "position");
+
     // put a X or O when there is a empty string
-    // if (board[coordinates.row][coordinates.column] === "") {
-    //     board[coordinates.row][coordinates.column] = player
-    // } else {
-    //     "error: can't play when a pawn is already played"
-    // }
-    // return board
+    if (board[coordinates.row][coordinates.column] === "") {
+        board[coordinates.row][coordinates.column] = player
+
+    } else {
+        "error: can't play when a pawn is already played"
+    }
+
+    console.log(board, "board");
+    return board
 }
 
 //AI play a pawn in board
