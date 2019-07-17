@@ -1,3 +1,6 @@
+import { winningGame } from './winning2.js'
+//winner
+export let winner = "";
 
 // create a board
 export function generateBoard() {
@@ -63,8 +66,6 @@ function getPosition(index) {
 export function playPawn(board, index, player) {
     let coordinates = getPosition(index);
 
-    console.log(coordinates.row, coordinates.column, "position");
-
     // put a X or O when there is a empty string
     if (board[coordinates.row][coordinates.column] === "") {
         board[coordinates.row][coordinates.column] = player
@@ -72,8 +73,9 @@ export function playPawn(board, index, player) {
     } else {
         "error: can't play when a pawn is already played"
     }
+    // Check if there is a winner
+    winner = winningGame(board, player);
 
-    console.log(board, "board");
     return board
 }
 
