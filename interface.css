@@ -32,27 +32,51 @@ body {
 }
 .modal-container {
   display: flex;
-  align-items: center;
+
   background-color: #fefefe;
   margin: 15% auto; /* 15% from the top and centered */
   padding: 20px;
   border: 1px solid #888;
-  width: 80%; /* Could be more or less, depending on screen size */
+  width: 50%; /* Could be more or less, depending on screen size */
 }
 .reload-button{
+  display: flex;
+  justify-content: center;
   color: #aaa;
-  float: right;
+  margin-right: auto;
   font-size: 28px;
   font-weight: bold;
 }
 
 .modal-container > p {
+  display: flex;
   font-size: 40px;
-  margin-left: 30%;
-  margin-right: 15%;
+  flex-basis: 18rem;
+  justify-content: flex-end;
+  margin-left: 25%;
+  
 }
-.modal-container > button{
+.modal-container > .reload-button{
+  display: flex;
   margin-top: 20%;
   font-size: 20px;
   margin-left:  0;
+
+
+}
+.close {
+  display: flex;
+  justify-content: center;
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+  margin-top: 0px;
+  height: 35px;
+}
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
 }

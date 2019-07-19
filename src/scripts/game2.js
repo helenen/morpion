@@ -80,13 +80,34 @@ export function playPawn(board, index, player) {
 }
 
 //AI play a pawn in board
-export function aiPlayPawn(board, player, rowSeed, columnSeed) {
-    // Get random index between 0 and 2
-    const row = Math.floor(rowSeed() * 3)
-    const column = Math.floor(columnSeed() * 3)
+export function aiPlayPawn(board, player, seed) {
 
-    //play a pawn
-    const result = playPawn(board, row, column, player);
+    let box = Array.from(document.getElementsByClassName('box'))
+
+    // Get random index between 0 and 8
+    let emptyGrid = box.filter(box => box.innerText === "");
+
+    let randIndex = Math.floor(seed * emptyGrid.length);
+
+    // Get coordinates based on the random index
+    let coord = getPosition(randIndex);
+
+
+    if (board[coord.row][coord.column] === "") {
+        console.log(board[coord.row][coord.column].innerText = player);
+        alert()
+    }
+
+    console.log(board);
+    // filter empty cases
+    // while (board[coord.row][coord.column] !== "") {
+    //     randIndex = Math.floor(seed() * 9);
+    //     coord = getPosition(randIndex);
+    //     break;
+    // }
+
+
+    const result = playPawn(board, randIndex, player);
 
     return result;
 }

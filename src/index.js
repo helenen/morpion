@@ -1,4 +1,4 @@
-import { generateBoard, playPawn, winner } from './scripts/game2.js';
+import { generateBoard, playPawn, winner, aiPlayPawn } from './scripts/game2.js';
 
 
 
@@ -42,6 +42,10 @@ function playPawnDom(board) {
                 return
             }
 
+            setTimeout(() => {
+                aiPlayPawn(board, "O", Math.random());
+            }, 400);
+
         })
     });
 }
@@ -63,22 +67,34 @@ export function modal() {
     const modal = document.createElement("DIV");
     modal.setAttribute('class', 'modal');
 
-    //create button
+    //create reload button
     const reloadButton = document.createElement("BUTTON");
     reloadButton.setAttribute('class', 'reload-button');
+
+    //create close button
+    const closeButton = document.createElement("BUTTON");
+    closeButton.setAttribute('class', 'close');
+
 
     //nest elements in DOM
     document.body.appendChild(modal);
     modal.appendChild(modalContainer);
     modalContainer.appendChild(modalText);
     modalContainer.appendChild(reloadButton);
+    modalContainer.appendChild(closeButton);
 
     //display words
     modalText.innerHTML = "Tu as gagné " + winner;
     reloadButton.innerHTML = "recommencer";
+    closeButton.innerHTML = "&times";
 
     //refresh window
     reloadButton.onclick = () => window.location.reload();
+
+    //remove modal
+    closeButton.onclick = function () {
+        modal.style.display = "none";
+    }
 
 
 }
