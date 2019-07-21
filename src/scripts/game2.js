@@ -59,16 +59,19 @@ function getPosition(index) {
 // play a pawn in board
 export function playPawn(board, index, player) {
   let box = document.getElementsByClassName("box");
+
+  // insert id in html balise
   for (var i = 0; i < box.length; ++i) {
     box[i].setAttribute("id", "123456789".charAt(i));
   }
 
-  console.log(box, "box");
+  //index
   let coordinates = getPosition(index);
 
   // put a X or O when there is a empty string
   if (board[coordinates.row][coordinates.column] === "") {
-    box[id].innerHTML = player;
+    box[index].innerHTML = player;
+    board[coordinates.row][coordinates.column] = player;
   } else {
     ("error: can't play when a pawn is already played");
   }
@@ -89,18 +92,16 @@ export function aiPlayPawn(board, player, seed) {
 
   // Get coordinates based on the random index
   let coord = getPosition(randIndex);
+  let emptyBox = [];
 
-  // if (board[coord.row][coord.column] === "") {
-  //     console.log(board[coord.row][coord.column].innerText = player);
-  //     alert()
-  // }
-
-  // filter empty cases
-  // while (board[coord.row][coord.column] !== "") {
-  //     randIndex = Math.floor(seed() * 9);
-  //     coord = getPosition(randIndex);
-  //     break;
-  // }
+  //filter empty cases
+  while (board[coord.row][coord.column] === "") {
+    randIndex = Math.floor(seed * 9);
+    coord = getPosition(randIndex);
+    emptyBox.push(board[coord.row][coord.column]);
+    console.log(emptyBox, "empty");
+    break;
+  }
 
   const result = playPawn(board, randIndex, player);
 
