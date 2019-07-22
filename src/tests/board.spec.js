@@ -11,6 +11,6 @@ describe("Should have a morpion grid", () => {
     });
 
     test("should return an empty gameboard of 3 column * 3 row", () => {
-        expect(res).toEqual([["", "", ""], ["", "", ""], ["", "", ""]]);
+        expect(res).toEqual([[0, 0, 0], [0, 0, 0], [0, 0, 0]]);
     });
 });
