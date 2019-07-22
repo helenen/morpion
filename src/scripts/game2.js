@@ -67,7 +67,7 @@ export function playPawn(board, index, player) {
 
     //index
     let position = getPosition(index);
-
+    //pilou
 
     // put a X or O when there is a empty string
     if (board[position.row][position.column] === 0) {
