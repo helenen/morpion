@@ -45,11 +45,11 @@ function playPawnDom(board) {
         e.addEventListener(
             "click",
             () => {
-                console.log(board)
+
                 //place pawn in board functionnal
                 playPawn(board, index, 1);
-                console.log(board)
-               
+
+
 
                 //check if there is a winner and display a modal
                 if (winner !== null) {

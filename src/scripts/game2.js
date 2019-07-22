@@ -59,7 +59,7 @@ function getPosition(index) {
 // play a pawn in board
 export function playPawn(board, index, player) {
     let box = document.getElementsByClassName("box");
-    console.log(box, "box")
+
     // insert id in html balises
     for (var i = 0; i < box.length; ++i) {
         box[i].setAttribute("id", "123456789".charAt(i));
@@ -85,11 +85,24 @@ export function playPawn(board, index, player) {
 //AI play a pawn in board
 export function aiPlayPawn(board, player, seed) {
     let positions = []
+    console.log(positions)
+    let row = Math.floor(Math.random() * 3);
+    let column = Math.floor(Math.random() * 3);
 
-    board.flatMap(e, i, arr => e === 0 ? positions.push() : null)
-    console.log(emptyGrid)
+
+    for (let i = 0; i < board.length; i++) {
+
+
+        for (let j = 0; j < board[i].length; j++) {
+            if (board[row][column] !== player) {
+
+                positions.push({ 'column': i, 'row': j })
+            }
+        }
+    }
+    //console.log(positions, "positions")
     // Get random index of emptyGrid
-    let randIndex = Math.floor(seed * emptyGrid.length);
+    let randIndex = Math.floor(seed * positions.length);
 
 
     const result = playPawn(board, randIndex, player);
