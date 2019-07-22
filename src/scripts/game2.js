@@ -99,15 +99,17 @@ export function aiPlayPawn(board, player, seed) {
     }
 
     console.log(board);
-    // filter empty cases
-    // while (board[coord.row][coord.column] !== "") {
-    //     randIndex = Math.floor(seed() * 9);
-    //     coord = getPosition(randIndex);
-    //     break;
-    // }
-
 
     const result = playPawn(board, randIndex, player);
 
     return result;
 }
+
+
+
+// filter empty cases
+    // while (board[coord.row][coord.column] !== "") {
+    //     randIndex = Math.floor(seed() * 9);
+    //     coord = getPosition(randIndex);
+    //     break;
+    // }
