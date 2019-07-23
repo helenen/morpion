@@ -17,6 +17,7 @@ export function winningHorizonal(board, player) {
             return true;
         }
     }
+
     return false;
 }
 
@@ -26,9 +27,11 @@ export function winningHorizonal(board, player) {
  * @param {*} player 
  */
 export function winningDiagonal(board, player) {
-    if (board[0][0] === player && board[1][1] === player && board[2][2]) {
+    if (board[0][0] === player && board[1][1] === player && board[2][2] === player) {
+
         return true;
-    } else if (board[0][2] === player && board[1][1] === player && board[2][0]) {
+    } else if (board[0][2] === player && board[1][1] === player && board[2][0] === player) {
+
         return true;
     }
     return false;
@@ -43,10 +46,12 @@ export function winningDiagonal(board, player) {
  * @param {*} player 
  */
 export function winningVertical(board, player) {
+
     // première colonne
     if (board[0][0] === player &&
         board[1][0] === player &&
         board[2][0] === player) {
+
         return true
     }
 
@@ -54,6 +59,7 @@ export function winningVertical(board, player) {
     if (board[0][1] === player &&
         board[1][1] === player &&
         board[2][1] === player) {
+
         return true
     }
 
@@ -61,6 +67,7 @@ export function winningVertical(board, player) {
     if (board[0][2] === player &&
         board[1][2] === player &&
         board[2][2] === player) {
+
         return true
     }
 

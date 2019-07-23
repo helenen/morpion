@@ -45,11 +45,11 @@ describe("wining", () => {
 
         test("win sentence", () => {
             const board = [["O", "", ""], ["", "O", ""], ["", "", "O"]];
-            expect(winningGame(board, "O")).toEqual("Tu as gagné O");
+            expect(winningGame(board, "O")).toEqual("O");
         });
 
         test("should return null when no player is winning", () => {
-            const board = [["X", "", ""], ["", "", ""], ["", "", ""]];
+            const board = [["X", "X", "O"], ["O", "O", "X"], ["X", "X", "O"]];
             expect(winningGame(board, "X")).toEqual(null);
         })
     })

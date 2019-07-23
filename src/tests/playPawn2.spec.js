@@ -15,7 +15,7 @@ describe("Should play a pawn", () => {
     })
 
     test("should return board modified with player", () => {
-        expect(playPawn(board, 0, 1)).toEqual([
+        expect(playPawn(board, 0, 0, 1)).toEqual([
             [1, 0, 0],
             [0, 0, 0],
             [0, 0, 0]

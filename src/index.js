@@ -5,7 +5,7 @@ import {
     aiPlayPawn
 } from "./scripts/game2.js";
 
-
+//create interface
 function generateInterface(board) {
     const boardContainer = document.createElement("DIV");
     boardContainer.setAttribute("class", "container");
@@ -24,10 +24,18 @@ function generateInterface(board) {
             column.appendChild(box);
         }
     }
+    //HTML element
+    let box = Array.from(document.getElementsByClassName("box"));
+
+    // insert id in html balises
+    for (var i = 0; i < box.length; ++i) {
+        box[i].setAttribute("id", "123456789".charAt(i));
+    }
 }
 
 generateInterface(generateBoard());
 
+//waiting time : playPawn don't call same time aiPlayPawn 
 function sleep(milliseconds) {
     var start = new Date().getTime();
     for (var i = 0; i < 1e7; i++) {
@@ -36,30 +44,84 @@ function sleep(milliseconds) {
         }
     }
 }
+//give position index => row and column
+function getPosition(index) {
+    const coordinates = {
+        0: {
+            row: 0,
+            column: 0
+        },
+        1: {
+            row: 1,
+            column: 0
+        },
+        2: {
+            row: 2,
+            column: 0
+        },
+        3: {
+            row: 0,
+            column: 1
+        },
+        4: {
+            row: 1,
+            column: 1
+        },
+        5: {
+            row: 2,
+            column: 1
+        },
+        6: {
+            row: 0,
+            column: 2
+        },
+        7: {
+            row: 1,
+            column: 2
+        },
+        8: {
+            row: 2,
+            column: 2
+        }
+    };
 
+    return coordinates[index];
+}
+
+//display pawns in DOM
+function renderBoard(board) {
+    let box = Array.from(document.getElementsByClassName("box"));
+    for (var index = 0; index < 9; index++) {
+        let coord = getPosition(index);
+        if (board[coord.row][coord.column] === 1) box[index].innerText = "X";
+        else if (board[coord.row][coord.column] === 2) box[index].innerText = "O";
+    }
+
+}
+
+//call function playPanw and aiPlaypawn each click
 function playPawnDom(board) {
     let box = Array.from(document.getElementsByClassName("box"));
 
     box.map((e, index) => {
-
         e.addEventListener(
             "click",
             () => {
-
                 //place pawn in board functionnal
-                playPawn(board, index, 1);
+                let coord = getPosition(index);
+                playPawn(board, coord.row, coord.column, 1);
 
-
-
-                //check if there is a winner and display a modal
-                if (winner !== null) {
-                    setTimeout(() => modal(), 500);
-                    return;
-                }
+                renderBoard(board);
 
                 sleep(400);
                 aiPlayPawn(board, 2, Math.random());
+                renderBoard(board);
 
+                //check if there is a winner and display a modal
+                if (winner) {
+                    setTimeout(() => modal(), 500);
+                    return;
+                }
             },
             true
         );
@@ -98,8 +160,15 @@ export function modal() {
     modalContainer.appendChild(reloadButton);
     modalContainer.appendChild(closeButton);
 
-    //display words
-    modalText.innerHTML = "Tu as gagné " + winner;
+
+    //display winner's sentences
+    if (winner === 1) {
+        modalText.innerHTML = "Tu as gagné X"
+    } else if (winner === 2) {
+        modalText.innerHTML = "Tu as gagné O"
+    } else if (winner === null) {
+        modalText.innerHTML = "Match nul"
+    }
     reloadButton.innerHTML = "recommencer";
     closeButton.innerHTML = "&times";
 
