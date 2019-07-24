@@ -3,6 +3,8 @@ import { winningGame } from "./winning2.js";
 //winner
 export let winner;
 
+let turnCount = 0;
+
 // create a board
 export function generateBoard() {
     let board = new Array(
@@ -40,10 +42,15 @@ export function aiPlayPawn(board, player, seed) {
             }
         }
     }
+    turnCount += 1
+    if (turnCount === 5) {
+        return
+    }
+
+
     ;
     // Get random index of emptyGrid
     let randIndex = Math.floor(seed * positions.length);
-    console.log(positions[randIndex].row, positions[randIndex].column, "pos")
     playPawn(board, positions[randIndex].row, positions[randIndex].column, player);
 
     return board;

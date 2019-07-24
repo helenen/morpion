@@ -103,6 +103,7 @@ function renderBoard(board) {
 function playPawnDom(board) {
     let box = Array.from(document.getElementsByClassName("box"));
 
+
     box.map((e, index) => {
         e.addEventListener(
             "click",
@@ -114,9 +115,9 @@ function playPawnDom(board) {
                 renderBoard(board);
 
                 sleep(400);
-                aiPlayPawn(board, 2, Math.random());
-                renderBoard(board);
 
+                aiPlayPawn(board, 2, Math.random())
+                renderBoard(board);
                 //check if there is a winner and display a modal
                 if (winner) {
                     setTimeout(() => modal(), 500);
@@ -160,7 +161,7 @@ export function modal() {
     modalContainer.appendChild(reloadButton);
     modalContainer.appendChild(closeButton);
 
-
+    console.log(winner, "winner")
     //display winner's sentences
     if (winner === 1) {
         modalText.innerHTML = "Tu as gagné X"
