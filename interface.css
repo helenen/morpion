@@ -9,14 +9,14 @@ body {
   height: 500px;
   width: 600px;
   display: grid;
-  grid-template-columns: 200px 200px 200px;
+  grid-template-columns: repeat(3, 1fr);
   border: 1px solid black;
   margin-top: 5%;
 }
-.container > .column > div {
+.container > .column > .box {
   border: 0.6px solid black;
   height: 33.2%;
-}
+} 
  
 .modal {
   display: block; /* Hidden by default */

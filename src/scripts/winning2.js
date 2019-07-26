@@ -1,10 +1,10 @@
 /**
  * Checks if the player has won horizontally
- * @param {*} board
- * @param {*} player
+ * @param {Array} board
+ * @param {String} player
  */
 export function winningHorizonal(board, player) {
-  let count = 0;
+  let count;
 
   for (let i = 0; i < board.length; i++) {
     count = 0;
@@ -23,8 +23,8 @@ export function winningHorizonal(board, player) {
 
 /**
  * Checks if the player has won diagonally
- * @param {*} board
- * @param {*} player
+ * @param {Array} board
+ * @param {String} player
  */
 export function winningDiagonal(board, player) {
   if (
@@ -33,13 +33,16 @@ export function winningDiagonal(board, player) {
     board[2][2] === player
   ) {
     return true;
-  } else if (
+  }
+
+  if (
     board[0][2] === player &&
     board[1][1] === player &&
     board[2][0] === player
   ) {
     return true;
   }
+
   return false;
 }
 
@@ -47,69 +50,26 @@ export function winningDiagonal(board, player) {
  * Checks if the player has won vertically
  * Returns true if he has won
  * False otherwise
- * @param {*} board
- * @param {*} player
+ * @param {Array} board
+ * @param {String} player
  */
 export function winningVertical(board, player) {
-  // première colonne
-  if (
-    board[0][0] === player &&
-    board[1][0] === player &&
-    board[2][0] === player
-  ) {
-    return true;
-  }
-
-  // deuxième colonne
-  if (
-    board[0][1] === player &&
-    board[1][1] === player &&
-    board[2][1] === player
-  ) {
-    return true;
-  }
-
-  // troisième colonne
-  if (
-    board[0][2] === player &&
-    board[1][2] === player &&
-    board[2][2] === player
-  ) {
-    return true;
+  for (let y = 0; y < board[0].length; y++) {
+    let count = 0;
+    for (let i = 0; i < board.length; i++) {
+      if (board[i][y] === player) {
+        count++;
+      }
+    }
+    if (count === 3) {
+      return true
+    }
   }
 
   return false;
 }
 
 //Checks if the player has won horizontally, diagonally, vertically
-export function winningGame(board) {
-  let horizontalOne = winningHorizonal(board, 1);
-  let horizontalTwo = winningHorizonal(board, 2);
-  let verticalOne = winningVertical(board, 1);
-  let verticalTwo = winningVertical(board, 2);
-  let diagonalOne = winningDiagonal(board, 1);
-  let diagonalTwo = winningDiagonal(board, 2);
-
-  if (horizontalOne) {
-    return 1;
-  }
-  if (horizontalTwo) {
-    return 2;
-  }
-
-  if (verticalOne) {
-    return 1;
-  }
-  if (verticalTwo) {
-    return 2;
-  }
-
-  if (diagonalOne) {
-    return 1;
-  }
-  if (diagonalTwo) {
-    return 2;
-  }
-
-  return null;
+export function winningGame(board, player) {
+  return winningHorizonal(board, player) || winningVertical(board, player) || winningDiagonal(board, player);
 }

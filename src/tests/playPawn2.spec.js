@@ -6,54 +6,37 @@ import {
 
 describe("Should play a pawn", () => {
     let board = [
-        [0, 0, 0],
-        [0, 0, 0],
-        [0, 0, 0]
+        [null, null, null],
+        [null, null, null],
+        [null, null, null]
     ];
     beforeEach(() => {
         board = generateBoard();
     })
 
     test("should return board modified with player", () => {
-        expect(playPawn(board, 0, 0, 1)).toEqual([
-            [1, 0, 0],
-            [0, 0, 0],
-            [0, 0, 0]
+        expect(playPawn(board, 0, 0, 'X')).toEqual([
+            ['X', null, null],
+            [null, null, null],
+            [null, null, null]
         ]);
     });
 
     test("should return board modified with playerTwo", () => {
 
-        expect(playPawn(board, 1, 0, 2)).toEqual([
-            [0, 0, 0],
-            [2, 0, 0],
-            [0, 0, 0]
+        expect(playPawn(board, 1, 0, 'X')).toEqual([
+            [null, null, null],
+            ['X', null, null],
+            [null, null, null]
         ]);
     });
 
     test("shouldn't modify a pawn already played", () => {
         const playedBoard = [
-            [1, 0, 0],
-            [2, 0, 0],
-            [0, 0, 0]
+            ['X', null, null],
+            ['O', null, null],
+            [null, null, null]
         ];
-        expect(playPawn(playedBoard, 1, 0, 2)).toEqual([
-            [1, 0, 0],
-            [2, 0, 0],
-            [0, 0, 0]
-        ]);
+        expect(() => playPawn(playedBoard, 1, 0, 'O')).toThrow('can\'t play when a pawn is already played');
     });
-    test("should return a error message when a player try to play on pawn played", () => {
-        const playedBoardTwo = [
-            [1, 0, 0],
-            [2, 0, 0],
-            [0, 0, 0]
-        ];
-        expect(playPawn(playedBoardTwo, 1, 0, 1)).toEqual([
-            [1, 0, 0],
-            [2, 0, 0],
-            [0, 0, 0]
-        ]) && expect(playPawn(playedBoardTwo, 1, 0, 1)).toEqual("error: can't play when a pawn is already played");
-
-    })
 });
