@@ -2,33 +2,49 @@ import { generateBoard, playPawn, aiPlayPawn } from './scripts/game2.js'
 import { winningGame } from "./scripts/winning2.js";
 
 function render(board) {
-    const boardContainer = document.createElement("DIV");
-    const newboardContainer = document.createTextNode("DIV");
-    boardContainer.appendChild(newboardContainer);
-    boardContainer.setAttribute("class", "container");
-    document.body.appendChild(boardContainer);
+    const container = document.createElement("DIV");
+    container.setAttribute("class", "container");
+    document.body.appendChild(container);
 
     for (let i = 0; i < board.length; i++) {
         const column = document.createElement("div");
         column.setAttribute("class", "column");
-        boardContainer.appendChild(column);
+        container.appendChild(column);
+
 
         for (let j = 0; j < board[i].length; j++) {
             const box = document.createElement("div");
             box.setAttribute("class", "box");
             box.setAttribute("value", "null");
             box.setAttribute("id", "col-" + i + ' row-' + j);
+            column.appendChild(box);
 
             if (board[i][j]) {
                 box.innerHTML = board[i][j]
             }
 
             box.addEventListener('click', () => {
-                const newBoard = playPawn(board, i, j, "X")
-                render(newBoard)
+                let boardI = playPawn(board, i, j, "X")
+
+                container.remove()
+
+                let newBoard = document.createElement("DIV");
+                newBoard.setAttribute("class", "container");
+                document.body.appendChild(newBoard);
+                newBoard.appendChild(column);
+                newBoard = container
+                console.log(newBoard);
+                return boardI
+                // board = playPawn(board, i, j, "X")
+                // return render(board)
+
+
+                // https://www.digitalocean.com/community/tutorials/how-to-make-changes-to-the-dom
+
+
             });
 
-            column.appendChild(box);
+
         }
     }
 }
