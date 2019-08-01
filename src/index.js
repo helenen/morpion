@@ -1,47 +1,46 @@
 import { generateBoard, playPawn, aiPlayPawn } from "./scripts/game2.js";
 import { winningGame } from "./scripts/winning2.js";
 
+
 function render(board) {
-  const container = document.createElement("DIV");
-  container.setAttribute("class", "container");
-  document.body.appendChild(container);
+    let mainContainer = document.createElement("DIV");
+    const container = document.createElement("DIV");
 
-  for (let i = 0; i < board.length; i++) {
-    const column = document.createElement("div");
-    column.setAttribute("class", "column");
-    container.appendChild(column);
+    mainContainer.setAttribute("class", "mainContainer");;
+    container.setAttribute("class", "container");
 
-    for (let j = 0; j < board[i].length; j++) {
-      const box = document.createElement("div");
-      box.setAttribute("class", "box");
-      box.setAttribute("value", "null");
-      box.setAttribute("id", "col-" + i + " row-" + j);
-      column.appendChild(box);
+    document.body.appendChild(mainContainer);
+    mainContainer.appendChild(container);
 
-      if (board[i][j]) {
-        box.innerHTML = board[i][j];
-      }
+    for (let i = 0; i < board.length; i++) {
+        const column = document.createElement("div");
+        column.setAttribute("class", "column");
+        container.appendChild(column);
 
-      box.addEventListener("click", () => {
-        playPawn(board, i, j, "X");
 
-        container.remove();
+        for (let j = 0; j < board[i].length; j++) {
+            const box = document.createElement("div");
+            box.setAttribute("class", "box");
+            box.setAttribute("value", "null");
+            box.setAttribute("id", "col-" + i + " row-" + j);
+            column.appendChild(box);
 
-        let newBoard = document.createElement("DIV");
-        console.log(newBoard);
-        document.body.appendChild(newBoard);
-        newBoard.appendChild(column);
+            if (board[i][j]) {
+                box.innerHTML = board[i][j];
+            }
 
-        newContainer = document.body.replaceChild(newBoard, container);
+            box.addEventListener("click", () => {
 
-        return render(newContainer);
-        // board = playPawn(board, i, j, "X")
-        // return render(board)
+                mainContainer.remove();
 
-        // https://www.digitalocean.com/community/tutorials/how-to-make-changes-to-the-dom
-      });
+                let newContainer = playPawn(board, i, j, "X")
+
+
+                return render(newContainer)
+
+            });
+        }
     }
-  }
 }
 
 render(generateBoard());
