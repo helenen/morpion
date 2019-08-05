@@ -63,30 +63,27 @@ function render(board) {
         for (let j = 0; j < board[i].length; j++) {
             const box = document.createElement("div");
             box.setAttribute("class", "box");
-            box.setAttribute("value", "null");
             box.setAttribute("id", "col-" + i + " row-" + j);
             column.appendChild(box);
 
             if (board[i][j]) {
-                let coord = getPosition(index);
-                console.log(coord);
                 box.innerHTML = board[coord.row][coord.column];
             }
 
             box.addEventListener("click", () => {
 
-                mainContainer.remove();
-                let coord = getPosition(index);
 
+                console.log(box);
+                //mainContainer.remove();
 
-                let newContainer = playPawn(board, coord.row, coord.column, 1)
+                let newContainer = playPawn(board, row, column, 1)
 
                 //let winner = winningGame(board);
 
 
-                aiPlayPawn(board, "O", Math.random);
+                //aiPlayPawn(board, "O", Math.random);
 
-                console.log(board);
+
 
                 // if (winner) {
                 //     setTimeout(() => modal(winner), 200);
