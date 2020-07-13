@@ -20,6 +20,6 @@
     "jest": "^24.5.0",
     "node-modules": "^1.0.1",
     "regenerator-runtime": "^0.13.2",
-    "standard-version": "^5.0.2"
+    "standard-version": "^8.0.1"
   }
 }
